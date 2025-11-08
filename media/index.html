@@ -5,30 +5,41 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Media</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
   :root{
-    --bg: #1a103d;          /* خلفية أرجوانية داكنة */
-    --card: #25194d;        /* خلفية البطاقات */
-    --accent: #e84393;      /* وردي */
-    --accent-2: #fd79a8;    /* وردي فاتح */
-    --muted: #c9a8e0;
-    --glass: rgba(255,255,255,0.05);
-    --success: #55efc4;
-    --text: #f7f1ff;
+    --bg: #f8fafc;          /* خلفية فاتحة */
+    --card: #ffffff;        /* خلفية البطاقات */
+    --accent: #ec4899;      /* وردي */
+    --accent-2: #f472b6;    /* وردي فاتح */
+    --muted: #64748b;
+    --glass: rgba(0,0,0,0.05);
+    --success: #10b981;
+    --text: #1e293b;
+    --border: #e2e8f0;
+    --shadow: 0 10px 25px rgba(0,0,0,0.05);
   }
+  
   *{box-sizing:border-box}
-  html,body{height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; 
-            background:linear-gradient(135deg, var(--bg), #2d1b69); color:var(--text); margin:0; direction:rtl}
+  html,body{
+    height:100%;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; 
+    background:var(--bg); 
+    color:var(--text); 
+    margin:0; 
+    direction:rtl;
+    transition: all 0.3s ease;
+  }
+  
   .wrap{
     max-width: 100%;
     margin: 0 auto;
     padding: 16px;
     background:var(--card); 
     border-radius:24px; 
-    box-shadow:0 20px 60px rgba(0,0,0,0.3); 
-    border:1px solid var(--glass); 
+    box-shadow: var(--shadow); 
+    border:1px solid var(--border); 
     position:relative; 
     overflow:hidden;
     min-height: 100vh;
@@ -50,7 +61,16 @@
     }
   }
   
-  .wrap::before{content:'';position:absolute;top:0;right:0;width:100%;height:4px;background:linear-gradient(90deg, var(--accent), var(--accent-2))}
+  .wrap::before{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    border-radius: 24px 24px 0 0;
+  }
   
   header{
     display:flex;
@@ -78,7 +98,7 @@
     font-weight:700;
     color:#fff;
     font-size:24px;
-    box-shadow: 0 10px 30px rgba(232, 67, 147, 0.3);
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.3);
   }
   
   @media (min-width: 768px) {
@@ -95,6 +115,7 @@
     background:linear-gradient(90deg, var(--accent), var(--accent-2));
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
+    font-weight: 700;
   }
   
   @media (min-width: 768px) {
@@ -131,11 +152,16 @@
   }
   
   .card{
-    background:rgba(255,255,255,0.03);
+    background:var(--card);
     padding: 20px;
-    border-radius:16px;
-    border:1px solid var(--glass); 
-    backdrop-filter:blur(10px);
+    border-radius:20px;
+    border:1px solid var(--border); 
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
   }
   
   @media (min-width: 768px) {
@@ -153,9 +179,9 @@
   }
   
   .uploader{
-    border:2px dashed rgba(255,255,255,0.1);
+    border:2px dashed var(--border);
     padding: 30px 20px;
-    border-radius:16px;
+    border-radius:20px;
     min-height:180px;
     display:flex;
     flex-direction:column;
@@ -164,7 +190,7 @@
     align-items:center;
     text-align:center;
     transition:all 0.3s ease; 
-    background:rgba(255,255,255,0.02);
+    background:rgba(236, 72, 153, 0.02);
   }
   
   @media (min-width: 768px) {
@@ -176,7 +202,8 @@
   
   .uploader:hover, .uploader.dragover{
     border-color:var(--accent);
-    background:rgba(232,67,147,0.05)
+    background:rgba(236, 72, 153, 0.05);
+    transform: translateY(-2px);
   }
   
   .uploader small{
@@ -196,7 +223,7 @@
     color:#fff;
     font-weight:600;
     cursor:pointer;
-    box-shadow: 0 8px 20px rgba(232,67,147,0.3); 
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.3); 
     transition:all 0.3s ease; 
     display:inline-flex;
     align-items:center;
@@ -213,7 +240,7 @@
   
   .btn:hover{
     transform:translateY(-2px);
-    box-shadow:0 12px 25px rgba(232,67,147,0.4);
+    box-shadow:0 12px 25px rgba(236, 72, 153, 0.4);
   }
   
   .btn:active{
@@ -241,19 +268,20 @@
     width:100%;
     padding:16px;
     border-radius:12px;
-    border:1px solid rgba(255,255,255,0.08);
-    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border);
+    background:var(--card);
     color:inherit;
     min-height:100px;
     resize:vertical;
     font-family:inherit;
     font-size:14px;
+    transition: all 0.3s ease;
   }
   
   .caption:focus{
     outline:none;
     border-color:var(--accent);
-    box-shadow:0 0 0 3px rgba(232,67,147,0.1);
+    box-shadow:0 0 0 3px rgba(236, 72, 153, 0.1);
   }
   
   .meta{
@@ -289,7 +317,7 @@
   }
   
   .file-list::-webkit-scrollbar-track{
-    background:rgba(255,255,255,0.05);
+    background:var(--border);
     border-radius:10px;
   }
   
@@ -303,28 +331,47 @@
     align-items:center;
     gap:16px;
     padding:16px;
-    border-radius:12px;
-    background:linear-gradient(90deg, rgba(255,255,255,0.03), transparent);
-    border:1px solid rgba(255,255,255,0.05);
+    border-radius:16px;
+    background:var(--bg);
+    border:1px solid var(--border);
     transition:all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .file-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--accent), var(--accent-2));
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
   
   .file-item:hover{
-    background:linear-gradient(90deg, rgba(232,67,147,0.1), transparent);
-    border-color:rgba(232,67,147,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  }
+  
+  .file-item:hover::before {
+    opacity: 1;
   }
   
   .thumb{
     width: 50px;
     height: 50px;
-    border-radius:10px;
-    background:rgba(255,255,255,0.05);
+    border-radius:12px;
+    background:var(--bg);
     display:grid;
     place-items:center;
     font-size:14px;
     color:var(--muted);
     overflow:hidden;
     flex-shrink:0;
+    border: 1px solid var(--border);
   }
   
   @media (min-width: 576px) {
@@ -370,20 +417,27 @@
     font-size:14px;
     text-align:center;
     padding-top:16px;
-    border-top:1px solid rgba(255,255,255,0.05);
+    border-top:1px solid var(--border);
   }
   
   /* popup */
   .overlay{
     position:fixed;
-    inset:0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display:none;
     align-items:center;
     justify-content:center;
     backdrop-filter: blur(8px);
     z-index:150;
-    background:rgba(26,16,61,0.8);
+    background:rgba(0, 0, 0, 0.5);
     padding: 16px;
+  }
+  
+  .overlay.show{
+    display: flex;
   }
   
   .progress-modal{
@@ -391,10 +445,22 @@
     max-width:500px;
     background:var(--card);
     padding:20px;
-    border-radius:20px;
-    border:1px solid var(--glass);
-    box-shadow:0 25px 60px rgba(0,0,0,0.4);
+    border-radius:24px;
+    border:1px solid var(--border);
+    box-shadow:0 25px 60px rgba(0,0,0,0.15);
     position:relative;
+    animation: modalAppear 0.3s ease-out;
+  }
+  
+  @keyframes modalAppear {
+    from {
+      opacity: 0;
+      transform: translateY(-20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
   }
   
   @media (min-width: 576px) {
@@ -411,7 +477,7 @@
     width:100%;
     height:4px;
     background:linear-gradient(90deg, var(--accent), var(--accent-2));
-    border-radius:20px 20px 0 0;
+    border-radius:24px 24px 0 0;
   }
   
   .prog-row{
@@ -420,9 +486,15 @@
     gap:16px;
     margin-bottom:16px;
     padding:16px;
-    border-radius:12px;
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.05);
+    border-radius:16px;
+    background:var(--bg);
+    border:1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+  
+  .prog-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
   }
   
   .prog-info{
@@ -432,10 +504,11 @@
   .bar{
     width:100%;
     height:12px;
-    background:rgba(255,255,255,0.08);
+    background:var(--border);
     border-radius:10px;
     overflow:hidden;
     margin-top:8px;
+    position: relative;
   }
   
   .bar > i{
@@ -444,7 +517,16 @@
     width:0%;
     background:linear-gradient(90deg,var(--accent),var(--accent-2));
     border-radius:10px;
-    transition:width .15s linear;
+    transition:width .3s ease;
+  }
+  
+  .bar-percent {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
   }
   
   .small-muted{
@@ -454,9 +536,9 @@
   
   .ok{
     background:var(--success);
-    color:#01220e;
+    color:#fff;
     padding:10px 20px;
-    border-radius:10px;
+    border-radius:12px;
     border:none;
     cursor:pointer;
     font-weight:600;
@@ -464,18 +546,19 @@
     display:inline-flex;
     align-items:center;
     gap:8px;
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
   }
   
   .ok:hover{
     transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(85,239,196,0.3);
+    box-shadow:0 8px 20px rgba(16, 185, 129, 0.4);
   }
   
   .danger{
-    background:#ff6b6b;
+    background:#ef4444;
     color:#fff;
     padding:10px 20px;
-    border-radius:10px;
+    border-radius:12px;
     border:none;
     cursor:pointer;
     font-weight:600;
@@ -483,11 +566,12 @@
     display:inline-flex;
     align-items:center;
     gap:8px;
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
   }
   
   .danger:hover{
     transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(255,107,107,0.3);
+    box-shadow:0 8px 20px rgba(239, 68, 68, 0.4);
   }
   
   .upload-icon{
@@ -503,10 +587,10 @@
   }
   
   .tip-box{
-    background:linear-gradient(135deg, rgba(232,67,147,0.1), rgba(253,121,168,0.1));
+    background:linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(244, 114, 182, 0.05));
     padding:16px;
-    border-radius:12px;
-    border:1px solid rgba(232,67,147,0.2);
+    border-radius:16px;
+    border:1px solid rgba(236, 72, 153, 0.2);
     margin-top:16px;
   }
   
@@ -532,9 +616,15 @@
     flex:1;
     text-align:center;
     padding:16px;
-    background:rgba(255,255,255,0.03);
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,0.05);
+    background:var(--bg);
+    border-radius:16px;
+    border:1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+  
+  .stat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
   }
   
   .stat-value{
@@ -559,14 +649,14 @@
     font-size:64px;
     margin-bottom:16px;
     color:var(--accent);
-    opacity:0.5;
+    opacity:0.3;
   }
   
   .warning-note {
-    background: rgba(255, 193, 7, 0.1);
-    border: 1px solid rgba(255, 193, 7, 0.3);
-    border-radius: 8px;
-    padding: 12px;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 12px;
+    padding: 12px 16px;
     margin-top: 16px;
     display: flex;
     align-items: center;
@@ -574,14 +664,66 @@
   }
   
   .warning-note i {
-    color: #ffc107;
+    color: #f59e0b;
     font-size: 18px;
   }
   
   .warning-note div {
-    color: #ffc107;
+    color: #92400e;
     font-size: 13px;
     flex: 1;
+    font-weight: 500;
+  }
+  
+  .progress-percent {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 4px;
+  }
+  
+  .file-progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+  
+  .upload-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--muted);
+  }
+  
+  .status-dot.pending {
+    background: #f59e0b;
+  }
+  
+  .status-dot.uploading {
+    background: var(--accent);
+    animation: pulse 1.5s infinite;
+  }
+  
+  .status-dot.success {
+    background: var(--success);
+  }
+  
+  .status-dot.error {
+    background: #ef4444;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
   }
 </style>
 </head>
@@ -591,7 +733,7 @@
     <div class="logo"><i class="fas fa-cloud-upload-alt"></i></div>
     <div>
       <h1>Media - رفع الملفات إلى تليجرام</h1>
-      <p class="lead">رفع صور وفيديوهات بأعلى جودة، مع إضافة نص وصفي، ومتابعة تقدم الرفع في نافذة منبثقة. تصميم عصري برومانسي.</p>
+      <p class="lead">رفع صور وفيديوهات بأعلى جودة، مع إضافة نص وصفي، ومتابعة تقدم الرفع في نافذة منبثقة. تصميم عصري أنيق.</p>
     </div>
   </header>
 
@@ -649,7 +791,7 @@
             </div>
             <div style="text-align:left">
               <div style="font-size:13px;color:var(--muted)">النمط</div>
-              <div style="font-weight:700;color:var(--accent)">رومانسي</div>
+              <div style="font-weight:700;color:var(--accent)">فاتح</div>
             </div>
           </div>
 
@@ -665,14 +807,14 @@
           </div>
 
           <div style="margin-top:auto; display:flex; gap:12px">
-            <button id="clearBtn" class="btn" style="background:rgba(255,255,255,0.1);color:#fff;flex:1"><i class="fas fa-trash"></i> مسح الكل</button>
+            <button id="clearBtn" class="btn" style="background:var(--bg);color:var(--text);flex:1"><i class="fas fa-trash"></i> مسح الكل</button>
           </div>
         </div>
       </aside>
     </form>
 
     <footer>
-      <div><i class="fas fa-heart" style="color:var(--accent)"></i> تصميم برومانسي عصري - جاهز للاستخدام الفعلي</div>
+      <div><i class="fas fa-heart" style="color:var(--accent)"></i> تصميم عصري أنيق - جاهز للاستخدام الفعلي</div>
     </footer>
   </main>
 </div>
@@ -697,302 +839,396 @@
 </div>
 
 <script>
-/*
-  Media - رفع الملفات إلى تليجرام
-  - يقرأ data.json في نفس المجلد للحصول على token و chat_id
-  - يدعم السحب والإفلات
-  - يرسل كل ملف كـ sendDocument للحفاظ على الجودة
-  - يعرض نافذة منبثقة مع شريط تقدم لكل ملف
-*/
+// Media - رفع الملفات إلى تليجرام
+// - يقرأ data.json في نفس المجلد للحصول على token و chat_id
+// - يدعم السحب والإفلات
+// - يرسل كل ملف كـ sendDocument للحفاظ على الجودة
+// - يعرض نافذة منبثقة مع شريط تقدم لكل ملف
 
-const filesInput = document.getElementById('filesInput');
-const uploader = document.getElementById('uploader');
-const fileListEl = document.getElementById('fileList');
-const captionEl = document.getElementById('caption');
-const sendAllBtn = document.getElementById('sendAllBtn');
-const clearBtn = document.getElementById('clearBtn');
-const overlay = document.getElementById('overlay');
-const progressList = document.getElementById('progressList');
-const overallInfo = document.getElementById('overallInfo');
-const doneBtn = document.getElementById('doneBtn');
-const closeOverlay = document.getElementById('closeOverlay');
-const emptyState = document.getElementById('emptyState');
-const fileCountEl = document.getElementById('fileCount');
-const totalSizeEl = document.getElementById('totalSize');
-
-let DATA = null; // سيحتوي على token و chat_id
-let files = []; // {file, id}
-
-function uid() { return Math.random().toString(36).slice(2,9) }
-
-async function loadConfig(){
-  try{
-    const res = await fetch('./data.json', {cache:'no-store'});
-    if(!res.ok) throw new Error('فشل تحميل data.json — تأكد من وجوده في نفس المجلد');
-    DATA = await res.json();
-    if(!DATA.bot_token || !DATA.chat_id) throw new Error('data.json ناقص bot_token أو chat_id');
-  } catch(err){
-    alert('خطأ: ' + err.message + '\nتأكد من وجود data.json في نفس المجلد وكتابته بشكل صحيح.');
-    throw err;
-  }
-}
-
-// السحب والإفلات
-uploader.addEventListener('dragover', e => { 
-  e.preventDefault(); 
-  uploader.classList.add('dragover');
-});
-
-uploader.addEventListener('dragleave', e => { 
-  uploader.classList.remove('dragover');
-});
-
-uploader.addEventListener('drop', e => {
-  e.preventDefault(); 
-  uploader.classList.remove('dragover');
-  if(e.dataTransfer.files) addFiles(e.dataTransfer.files);
-});
-
-// اختيار الملفات
-filesInput.addEventListener('change', e => addFiles(e.target.files));
-
-// إضافة الملفات
-function addFiles(fileList){
-  if(fileList.length > 0) {
-    emptyState.style.display = 'none';
-  }
-  
-  for(const f of Array.from(fileList)){
-    const id = uid();
-    files.push({file: f, id});
-    renderFileItem(f, id);
-  }
-  
-  updateStats();
-}
-
-// تحديث الإحصائيات
-function updateStats() {
-  fileCountEl.textContent = files.length;
-  
-  const totalSize = files.reduce((sum, item) => sum + item.file.size, 0);
-  totalSizeEl.textContent = formatBytes(totalSize);
-}
-
-// عرض قائمة الملفات
-function renderFileItem(file, id){
-  const div = document.createElement('div');
-  div.className = 'file-item';
-  div.dataset.id = id;
-
-  const thumb = document.createElement('div');
-  thumb.className = 'thumb';
-  if(file.type.startsWith('image/')){
-    const img = document.createElement('img');
-    img.style.width='100%'; img.style.height='100%'; img.style.objectFit='cover';
-    const url = URL.createObjectURL(file);
-    img.src = url;
-    img.onload = ()=> URL.revokeObjectURL(url);
-    thumb.appendChild(img);
-  } else if(file.type.startsWith('video/')){
-    thumb.innerHTML = '<i class="fas fa-video" style="font-size:24px"></i>';
-  } else {
-    thumb.innerHTML = '<i class="fas fa-file" style="font-size:24px"></i>';
-  }
-
-  const meta = document.createElement('div');
-  meta.style.flex='1';
-  meta.innerHTML = `<div class="fi-name">${escapeHtml(file.name)}</div><div class="fi-size">${formatBytes(file.size)} • ${file.type || 'غير معروف'}</div>`;
-
-  const del = document.createElement('button');
-  del.className = 'btn';
-  del.style.background='rgba(255,255,255,0.05)';
-  del.style.border='1px solid rgba(255,255,255,0.1)';
-  del.style.color='var(--muted)';
-  del.innerHTML = '<i class="fas fa-trash"></i>';
-  del.onclick = ()=> {
-    files = files.filter(x=>x.id !== id);
-    div.remove();
-    updateStats();
+class MediaUploader {
+  constructor() {
+    this.filesInput = document.getElementById('filesInput');
+    this.uploader = document.getElementById('uploader');
+    this.fileListEl = document.getElementById('fileList');
+    this.captionEl = document.getElementById('caption');
+    this.sendAllBtn = document.getElementById('sendAllBtn');
+    this.clearBtn = document.getElementById('clearBtn');
+    this.overlay = document.getElementById('overlay');
+    this.progressList = document.getElementById('progressList');
+    this.overallInfo = document.getElementById('overallInfo');
+    this.doneBtn = document.getElementById('doneBtn');
+    this.closeOverlay = document.getElementById('closeOverlay');
+    this.emptyState = document.getElementById('emptyState');
+    this.fileCountEl = document.getElementById('fileCount');
+    this.totalSizeEl = document.getElementById('totalSize');
     
-    if(files.length === 0) {
-      emptyState.style.display = 'block';
+    this.DATA = null;
+    this.files = [];
+    this.uploadInProgress = false;
+    
+    this.initEventListeners();
+  }
+  
+  initEventListeners() {
+    // السحب والإفلات
+    this.uploader.addEventListener('dragover', (e) => { 
+      e.preventDefault(); 
+      this.uploader.classList.add('dragover');
+    });
+    
+    this.uploader.addEventListener('dragleave', (e) => { 
+      this.uploader.classList.remove('dragover');
+    });
+    
+    this.uploader.addEventListener('drop', (e) => {
+      e.preventDefault(); 
+      this.uploader.classList.remove('dragover');
+      if(e.dataTransfer.files) this.addFiles(e.dataTransfer.files);
+    });
+    
+    // اختيار الملفات
+    this.filesInput.addEventListener('change', (e) => this.addFiles(e.target.files));
+    
+    // إرسال الملفات
+    this.sendAllBtn.addEventListener('click', (e) => this.handleUpload(e));
+    
+    // مسح الكل
+    this.clearBtn.addEventListener('click', () => this.clearFiles());
+    
+    // التحكم بالنافذة المنبثقة
+    this.closeOverlay.addEventListener('click', () => this.cancelUpload());
+    this.doneBtn.addEventListener('click', () => this.closeOverlayFunc());
+  }
+  
+  uid() { 
+    return Math.random().toString(36).slice(2,9); 
+  }
+  
+  async loadConfig() {
+    try {
+      const res = await fetch('./data.json', {cache: 'no-store'});
+      if(!res.ok) throw new Error('فشل تحميل data.json — تأكد من وجوده في نفس المجلد');
+      this.DATA = await res.json();
+      if(!this.DATA.bot_token || !this.DATA.chat_id) {
+        throw new Error('data.json ناقص bot_token أو chat_id');
+      }
+    } catch(err) {
+      alert('خطأ: ' + err.message + '\nتأكد من وجود data.json في نفس المجلد وكتابته بشكل صحيح.');
+      throw err;
     }
   }
-
-  div.appendChild(thumb);
-  div.appendChild(meta);
-  div.appendChild(del);
-  fileListEl.appendChild(div);
-}
-
-// دوال مساعدة
-function formatBytes(bytes){
-  if(bytes===0) return '0 B';
-  const k=1024, dm=2, sizes=['B','KB','MB','GB','TB'];
-  const i=Math.floor(Math.log(bytes)/Math.log(k));
-  return parseFloat((bytes/Math.pow(k,i)).toFixed(dm)) + ' ' + sizes[i];
-}
-
-function escapeHtml(s){ 
-  return s.replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c])); 
-}
-
-// إرسال الملفات
-sendAllBtn.addEventListener('click', async (e)=>{
-  e.preventDefault();
-  if(files.length === 0){ 
-    alert('لم تقم باختيار أي ملفات'); 
-    return; 
+  
+  addFiles(fileList) {
+    if(fileList.length > 0) {
+      this.emptyState.style.display = 'none';
+    }
+    
+    for(const f of Array.from(fileList)) {
+      const id = this.uid();
+      this.files.push({file: f, id});
+      this.renderFileItem(f, id);
+    }
+    
+    this.updateStats();
   }
   
-  try{
-    await loadConfig();
-  } catch { 
-    return; 
+  updateStats() {
+    this.fileCountEl.textContent = this.files.length;
+    
+    const totalSize = this.files.reduce((sum, item) => sum + item.file.size, 0);
+    this.totalSizeEl.textContent = this.formatBytes(totalSize);
   }
   
-  // بدء الإرسال
-  openOverlay();
-  await sendFilesSequential();
-});
-
-clearBtn.addEventListener('click', ()=>{
-  if(files.length === 0) return;
-  
-  if(confirm('هل تريد مسح جميع الملفات؟')) {
-    files = [];
-    fileListEl.innerHTML = '';
-    emptyState.style.display = 'block';
-    updateStats();
-  }
-});
-
-// التحكم بالنافذة المنبثقة
-function openOverlay(){
-  overlay.classList.add('show');
-  progressList.innerHTML = '';
-  doneBtn.style.display = 'none';
-  closeOverlay.style.display = 'inline-block';
-}
-
-function closeOverlayFunc(){
-  overlay.classList.remove('show');
-}
-
-closeOverlay.addEventListener('click', ()=>{
-  if(confirm('هل تريد إلغاء عملية الرفع؟')) closeOverlayFunc();
-});
-
-doneBtn.addEventListener('click', ()=> closeOverlayFunc());
-
-// إرسال الملفات بالتسلسل
-async function sendFilesSequential(){
-  const total = files.length;
-  let done = 0;
-  overallInfo.textContent = `${done} / ${total} ملفات`;
-
-  for(const item of [...files]){ // نسخة
-    const f = item.file;
-    // إنشاء صف في الواجهة
-    const row = document.createElement('div');
-    row.className = 'prog-row';
-    row.id = 'row-' + item.id;
-    row.innerHTML = `
-      <div style="font-size:20px;color:var(--accent)">
-        ${f.type.startsWith('image/') ? '<i class="fas fa-image"></i>' : 
-          f.type.startsWith('video/') ? '<i class="fas fa-video"></i>' : 
-          '<i class="fas fa-file"></i>'}
-      </div>
-      <div class="prog-info">
-        <div style="font-weight:600">${escapeHtml(f.name)}</div>
-        <div class="small-muted" id="status-${item.id}">0%</div>
-        <div class="bar"><i id="bar-${item.id}"></i></div>
-      </div>
+  renderFileItem(file, id) {
+    const div = document.createElement('div');
+    div.className = 'file-item';
+    div.dataset.id = id;
+    
+    const thumb = document.createElement('div');
+    thumb.className = 'thumb';
+    if(file.type.startsWith('image/')) {
+      const img = document.createElement('img');
+      img.style.width = '100%';
+      img.style.height = '100%';
+      img.style.objectFit = 'cover';
+      const url = URL.createObjectURL(file);
+      img.src = url;
+      img.onload = () => URL.revokeObjectURL(url);
+      thumb.appendChild(img);
+    } else if(file.type.startsWith('video/')) {
+      thumb.innerHTML = '<i class="fas fa-video" style="font-size:24px"></i>';
+    } else {
+      thumb.innerHTML = '<i class="fas fa-file" style="font-size:24px"></i>';
+    }
+    
+    const meta = document.createElement('div');
+    meta.style.flex = '1';
+    meta.innerHTML = `
+      <div class="fi-name">${this.escapeHtml(file.name)}</div>
+      <div class="fi-size">${this.formatBytes(file.size)} • ${file.type || 'غير معروف'}</div>
     `;
-    progressList.appendChild(row);
-
-    // التحقق من الحجم (حد تليجرام ~50MB) -> تحذير مع المحاولة
-    const MAX = 50 * 1024 * 1024;
-    if(f.size > MAX){
-      const warn = document.createElement('div');
-      warn.style.color = '#ffcc00';
-      warn.style.fontSize = '12px';
-      warn.style.marginTop = '6px';
-      warn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ملاحظة: الملف أكبر من 50MB — قد يتم رفضه من قبل تليجرام.';
-      row.appendChild(warn);
+    
+    const del = document.createElement('button');
+    del.className = 'btn';
+    del.style.background = 'var(--bg)';
+    del.style.border = '1px solid var(--border)';
+    del.style.color = 'var(--text)';
+    del.innerHTML = '<i class="fas fa-trash"></i>';
+    del.onclick = () => {
+      if (this.uploadInProgress) {
+        alert('لا يمكن حذف الملفات أثناء عملية الرفع');
+        return;
+      }
+      this.files = this.files.filter(x => x.id !== id);
+      div.remove();
+      this.updateStats();
+      
+      if(this.files.length === 0) {
+        this.emptyState.style.display = 'block';
+      }
+    };
+    
+    div.appendChild(thumb);
+    div.appendChild(meta);
+    div.appendChild(del);
+    this.fileListEl.appendChild(div);
+  }
+  
+  formatBytes(bytes) {
+    if(bytes === 0) return '0 B';
+    const k = 1024;
+    const dm = 2;
+    const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+  }
+  
+  escapeHtml(s) { 
+    return s.replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": "&#39;"
+    }[c])); 
+  }
+  
+  async handleUpload(e) {
+    e.preventDefault();
+    if(this.files.length === 0) { 
+      alert('لم تقم باختيار أي ملفات'); 
+      return; 
     }
-
-    try{
-      await sendSingleFile(f, item.id, (percent) => {
-        const el = document.getElementById('bar-' + item.id);
-        const st = document.getElementById('status-' + item.id);
-        if(el) el.style.width = percent + '%';
-        if(st) st.textContent = percent.toFixed(0) + '%';
-      });
-      // في حالة النجاح
-      const st = document.getElementById('status-' + item.id);
-      if(st) {
-        st.textContent = 'تم الرفع ✓';
-        st.style.color = 'var(--success)';
-      }
-      done++;
-      overallInfo.textContent = `${done} / ${total} ملفات`;
-    } catch(err){
-      const st = document.getElementById('status-' + item.id);
-      if(st) {
-        st.textContent = 'فشل: ' + (err.message || 'خطأ');
-        st.style.color = '#ff6b6b';
-      }
+    
+    if (this.uploadInProgress) {
+      alert('هناك عملية رفع جارية بالفعل');
+      return;
+    }
+    
+    try {
+      await this.loadConfig();
+    } catch { 
+      return; 
+    }
+    
+    // بدء الإرسال
+    this.openOverlay();
+    this.uploadInProgress = true;
+    await this.sendFilesSequential();
+    this.uploadInProgress = false;
+  }
+  
+  clearFiles() {
+    if(this.files.length === 0) return;
+    
+    if (this.uploadInProgress) {
+      alert('لا يمكن مسح الملفات أثناء عملية الرفع');
+      return;
+    }
+    
+    if(confirm('هل تريد مسح جميع الملفات؟')) {
+      this.files = [];
+      this.fileListEl.innerHTML = '';
+      this.emptyState.style.display = 'block';
+      this.updateStats();
     }
   }
-
-  doneBtn.style.display = 'inline-block';
-  closeOverlay.style.display = 'none';
-}
-
-// إرسال ملف واحد مع تتبع التقدم
-function sendSingleFile(file, id, onProgress){
-  return new Promise((resolve, reject) => {
-    const token = DATA.bot_token.trim();
-    const chat_id = DATA.chat_id;
-
-    // استخدام sendDocument للحفاظ على الجودة الأصلية (للصور والفيديوهات)
-    const url = `https://api.telegram.org/bot${encodeURIComponent(token)}/sendDocument`;
-
-    const form = new FormData();
-    form.append('chat_id', chat_id);
-    form.append('caption', captionEl.value || '');
-    form.append('document', file, file.name);
-
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', url, true);
-
-    xhr.upload.onprogress = (e) => {
-      if(e.lengthComputable){
-        const percent = (e.loaded / e.total) * 100;
-        onProgress(percent);
+  
+  openOverlay() {
+    this.overlay.classList.add('show');
+    this.progressList.innerHTML = '';
+    this.doneBtn.style.display = 'none';
+    this.closeOverlay.style.display = 'inline-block';
+  }
+  
+  closeOverlayFunc() {
+    this.overlay.classList.remove('show');
+    this.uploadInProgress = false;
+  }
+  
+  cancelUpload() {
+    if(confirm('هل تريد إلغاء عملية الرفع؟')) this.closeOverlayFunc();
+  }
+  
+  async sendFilesSequential() {
+    const total = this.files.length;
+    let done = 0;
+    let successfulUploads = 0;
+    this.overallInfo.textContent = `${done} / ${total} ملفات`;
+    
+    for(const item of [...this.files]) {
+      const f = item.file;
+      // إنشاء صف في الواجهة
+      const row = document.createElement('div');
+      row.className = 'prog-row';
+      row.id = 'row-' + item.id;
+      row.innerHTML = `
+        <div style="font-size:20px;color:var(--accent)">
+          ${f.type.startsWith('image/') ? '<i class="fas fa-image"></i>' : 
+            f.type.startsWith('video/') ? '<i class="fas fa-video"></i>' : 
+            '<i class="fas fa-file"></i>'}
+        </div>
+        <div class="prog-info">
+          <div style="font-weight:600">${this.escapeHtml(f.name)}</div>
+          <div class="upload-status">
+            <div class="status-dot pending"></div>
+            <div class="small-muted" id="status-${item.id}">في انتظار الرفع...</div>
+          </div>
+          <div class="file-progress">
+            <div class="bar">
+              <i id="bar-${item.id}"></i>
+              <div class="bar-percent" id="percent-${item.id}">0%</div>
+            </div>
+          </div>
+        </div>
+      `;
+      this.progressList.appendChild(row);
+      
+      // التحقق من الحجم (حد تليجرام ~50MB) -> تحذير مع المحاولة
+      const MAX = 50 * 1024 * 1024;
+      if(f.size > MAX) {
+        const warn = document.createElement('div');
+        warn.style.color = '#f59e0b';
+        warn.style.fontSize = '12px';
+        warn.style.marginTop = '6px';
+        warn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ملاحظة: الملف أكبر من 50MB — قد يتم رفضه من قبل تليجرام.';
+        row.appendChild(warn);
       }
-    };
-
-    xhr.onload = function(){
-      if(xhr.status >= 200 && xhr.status < 300){
-        try{
-          const resp = JSON.parse(xhr.responseText);
-          if(resp.ok) resolve(resp);
-          else reject(new Error('Telegram API returned not ok: ' + (resp.description || 'unknown')));
-        }catch(err){
-          resolve({status: xhr.status, text: xhr.responseText});
+      
+      try {
+        // تحديث الحالة إلى جاري الرفع
+        const statusDot = row.querySelector('.status-dot');
+        statusDot.classList.remove('pending');
+        statusDot.classList.add('uploading');
+        
+        await this.sendSingleFile(f, item.id, (percent) => {
+          const el = document.getElementById('bar-' + item.id);
+          const st = document.getElementById('status-' + item.id);
+          const percentEl = document.getElementById('percent-' + item.id);
+          if(el) el.style.width = percent + '%';
+          if(st) st.textContent = 'جاري الرفع... ' + percent.toFixed(0) + '%';
+          if(percentEl) percentEl.textContent = percent.toFixed(0) + '%';
+        });
+        
+        // في حالة النجاح
+        const st = document.getElementById('status-' + item.id);
+        const statusDotSuccess = row.querySelector('.status-dot');
+        if(st) {
+          st.textContent = 'تم الرفع بنجاح ✓';
+          st.style.color = 'var(--success)';
+          st.style.fontWeight = '600';
         }
-      } else {
-        reject(new Error('HTTP ' + xhr.status + ': ' + xhr.statusText));
+        if(statusDotSuccess) {
+          statusDotSuccess.classList.remove('uploading');
+          statusDotSuccess.classList.add('success');
+        }
+        done++;
+        successfulUploads++;
+        this.overallInfo.textContent = `${done} / ${total} ملفات (${successfulUploads} ناجح)`;
+      } catch(err) {
+        const st = document.getElementById('status-' + item.id);
+        const statusDotError = row.querySelector('.status-dot');
+        if(st) {
+          st.textContent = 'فشل في الرفع: ' + (err.message || 'خطأ غير معروف');
+          st.style.color = '#ef4444';
+          st.style.fontWeight = '600';
+        }
+        if(statusDotError) {
+          statusDotError.classList.remove('uploading');
+          statusDotError.classList.add('error');
+        }
+        done++;
+        this.overallInfo.textContent = `${done} / ${total} ملفات (${successfulUploads} ناجح)`;
       }
-    };
-    xhr.onerror = function(){ reject(new Error('Network error')); };
-    xhr.send(form);
-  });
+    }
+    
+    this.doneBtn.style.display = 'inline-block';
+    this.closeOverlay.style.display = 'none';
+    
+    // عرض رسالة تلخيصية
+    if (successfulUploads === total) {
+      this.overallInfo.innerHTML = `<span style="color:var(--success)">تم رفع جميع الملفات بنجاح! (${successfulUploads}/${total})</span>`;
+    } else {
+      this.overallInfo.innerHTML = `<span style="color:#ef4444">تم رفع ${successfulUploads} من ${total} ملف</span>`;
+    }
+  }
+  
+  sendSingleFile(file, id, onProgress) {
+    return new Promise((resolve, reject) => {
+      const token = this.DATA.bot_token.trim();
+      const chat_id = this.DATA.chat_id;
+      
+      // استخدام sendDocument للحفاظ على الجودة الأصلية (للصور والفيديوهات)
+      const url = `https://api.telegram.org/bot${encodeURIComponent(token)}/sendDocument`;
+      
+      const form = new FormData();
+      form.append('chat_id', chat_id);
+      form.append('caption', this.captionEl.value || '');
+      form.append('document', file, file.name);
+      
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', url, true);
+      
+      xhr.upload.onprogress = (e) => {
+        if(e.lengthComputable) {
+          const percent = (e.loaded / e.total) * 100;
+          onProgress(percent);
+        }
+      };
+      
+      xhr.onload = function() {
+        if(xhr.status >= 200 && xhr.status < 300) {
+          try {
+            const resp = JSON.parse(xhr.responseText);
+            if(resp.ok) {
+              resolve(resp);
+            } else {
+              reject(new Error('Telegram API: ' + (resp.description || 'unknown error')));
+            }
+          } catch(err) {
+            reject(new Error('Failed to parse response'));
+          }
+        } else {
+          reject(new Error('HTTP ' + xhr.status + ': ' + xhr.statusText));
+        }
+      };
+      
+      xhr.onerror = function() { 
+        reject(new Error('فشل في الاتصال بالشبكة')); 
+      };
+      
+      xhr.ontimeout = function() {
+        reject(new Error('انتهت مهلة الاتصال'));
+      };
+      
+      // تعيين وقت انتظار 5 دقائق للملفات الكبيرة
+      xhr.timeout = 300000;
+      
+      xhr.send(form);
+    });
+  }
 }
 
+// تهيئة التطبيق عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+  new MediaUploader();
+});
 </script>
 </body>
 </html>
