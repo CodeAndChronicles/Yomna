@@ -1,43 +1,193 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Love Letter 💌</title>
+  <title>💌 رسالة حب إلى يُمنى</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #d63384;
+      --secondary-color: #ff8fab;
+      --accent-color: #ff4d6d;
+      --light-color: #fff0f3;
+      --dark-color: #590d22;
+      --text-color: #4a0e29;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a18cd1);
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0, #d4a5c0);
       background-size: 400% 400%;
-      animation: bgShift 10s ease infinite;
+      animation: bgShift 15s ease infinite;
       font-family: 'Cairo', sans-serif;
-      color: white;
+      color: var(--text-color);
       text-align: center;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    .hearts-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--primary-color);
+      transform: rotate(45deg);
+      opacity: 0;
+    }
+
+    .heart:before, .heart:after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart:before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart:after {
+      top: 0;
+      left: -10px;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(15px);
-      border-radius: 20px;
-      padding: 40px;
-      max-width: 400px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      padding: 40px 30px;
+      width: 90%;
+      max-width: 550px;
+      box-shadow: var(--shadow);
       animation: fadeIn 1.5s ease forwards;
+      position: relative;
+      z-index: 2;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .envelope {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 40px;
+      background: var(--primary-color);
+      border-radius: 5px;
+      z-index: 3;
+    }
+
+    .envelope:before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      border-bottom: 20px solid var(--secondary-color);
     }
 
     h1 {
-      margin-bottom: 15px;
-      font-size: 1.8rem;
-      color: #fff;
+      margin-bottom: 25px;
+      font-size: clamp(1.8rem, 4vw, 2.2rem);
+      color: var(--dark-color);
+      text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7);
+      position: relative;
+    }
+
+    h1:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 25%;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--accent-color), transparent);
     }
 
     p {
-      font-size: 1.1rem;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
       line-height: 1.8;
+      margin-bottom: 20px;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .signature {
+      margin-top: 25px;
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      color: var(--primary-color);
+      text-align: left;
+      font-weight: bold;
+    }
+
+    .heart-btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-family: 'Cairo', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      cursor: pointer;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+    }
+
+    .heart-btn:hover {
+      background: var(--primary-color);
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 77, 109, 0.6);
+    }
+
+    .flowers {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .flower {
+      position: absolute;
+      font-size: clamp(20px, 4vw, 24px);
+      opacity: 0.7;
+      animation: float 8s infinite ease-in-out;
     }
 
     @keyframes fadeIn {
@@ -50,17 +200,170 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(10deg); }
+    }
+
+    @keyframes heartFloat {
+      0% {
+        opacity: 0;
+        transform: translateY(0) rotate(45deg) scale(0);
+      }
+      10% {
+        opacity: 1;
+        transform: translateY(-20px) rotate(45deg) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-100px) rotate(45deg) scale(0.5);
+      }
+    }
+
+    /* تحسينات للتجاوب مع الشاشات الصغيرة */
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+      
+      .card {
+        padding: 30px 20px;
+        border-radius: 20px;
+      }
+      
+      .envelope {
+        width: 50px;
+        height: 35px;
+        top: -25px;
+      }
+      
+      .envelope:before {
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 15px solid var(--secondary-color);
+        top: -15px;
+      }
+      
+      p {
+        line-height: 1.7;
+        text-align: right;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      .card {
+        padding: 25px 15px;
+        border-radius: 15px;
+      }
+      
+      .heart-btn {
+        padding: 10px 20px;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="hearts-container" id="heartsContainer"></div>
+  <div class="flowers" id="flowersContainer"></div>
+  
   <div class="card">
-    <h1>💌 إلى يُمنى</h1>
+    <div class="envelope"></div>
+    <h1>💌 إلى حبيبتي يُمنى</h1>
     <p>
-      يمكن الكلام ميكفّيش أوصف قد إيه بحبك،  
-      بس كل حرف في الكود ده معمول عشانك.  
-      إنتي السبب و الإلهام و النور اللي بيخليني أكمّل ❤️  
-      بحبك يا يُمنى، دايمًا و للأبد 💞
+      يا نور عيني وقلبي وروحي، يا من جعلتِ حياتي جنةً وزادتها بهجةً وسعادة.<br><br>
+      
+      كل كلمة أحاول أن أقولها تعجز عن وصف مقدار حبي لكِ، فحبكِ نعمة من الله لا أستحقها، ولكني أشكر ربي كل يوم أن منّ عليّ بكِ.<br><br>
+      
+      إنتِ أكثر من مجرد حب، إنتِ شريك الحياة ورفيق الدرب، إنتِ السند في وقت الضيق والفرح في وقت السرور. معكِ أشعر أنني الأغنى في الدنيا، لأن قلبي يمتلك كنزاً لا يقدر بثمن.<br><br>
+      
+      أعدكِ بأن أظل بجانبكِ دائماً، أحميكِ وأرعاكِ وأسعدكِ ما حييت. سأكون لكِ السند والعون، وسأجعل حياتكِ مليئة بالحب والدفء والأمان.<br><br>
+      
+      بحبكِ يا يُمنى أكثر مما تستطيع الكلمات أن تعبر، وأكثر مما تدركه العيون. حبكِ هو أجمل شيء حدث لي في حياتي، وسأظل أحبكِ إلى الأبد.
     </p>
+    <div class="signature">مع كل حبي،<br>الذي لن يتوقف عن النمو</div>
+    <button class="heart-btn" id="heartButton">أرسل لكِ قلوباً 💖</button>
   </div>
+
+  <script>
+    // إنشاء القلوب العائمة
+    function createHearts() {
+      const heartsContainer = document.getElementById('heartsContainer');
+      const heartCount = 15;
+      
+      for (let i = 0; i < heartCount; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.classList.add('heart');
+          
+          // مواقع عشوائية
+          const left = Math.random() * 100;
+          const animationDuration = 3 + Math.random() * 4;
+          const size = 10 + Math.random() * 20;
+          
+          heart.style.left = `${left}%`;
+          heart.style.width = `${size}px`;
+          heart.style.height = `${size}px`;
+          heart.style.animation = `heartFloat ${animationDuration}s ease-in-out forwards`;
+          
+          heartsContainer.appendChild(heart);
+          
+          // إزالة القلب بعد انتهاء الحركة
+          setTimeout(() => {
+            heart.remove();
+          }, animationDuration * 1000);
+        }, i * 500);
+      }
+    }
+    
+    // إنشاء الزهور العائمة
+    function createFlowers() {
+      const flowersContainer = document.getElementById('flowersContainer');
+      const flowerEmojis = ['🌸', '🌺', '🌷', '💮', '🏵️', '🌼', '🌹'];
+      const flowerCount = 8;
+      
+      for (let i = 0; i < flowerCount; i++) {
+        const flower = document.createElement('div');
+        flower.classList.add('flower');
+        flower.innerHTML = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+        
+        // مواقع عشوائية
+        const left = Math.random() * 100;
+        const top = Math.random() * 100;
+        const animationDelay = Math.random() * 5;
+        const animationDuration = 6 + Math.random() * 4;
+        
+        flower.style.left = `${left}%`;
+        flower.style.top = `${top}%`;
+        flower.style.animationDelay = `${animationDelay}s`;
+        flower.style.animationDuration = `${animationDuration}s`;
+        
+        flowersContainer.appendChild(flower);
+      }
+    }
+    
+    // زر إرسال القلوب
+    document.getElementById('heartButton').addEventListener('click', function() {
+      createHearts();
+      
+      // تأثير اهتزاز للزر
+      this.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        this.style.transform = 'scale(1)';
+      }, 150);
+    });
+    
+    // تهيئة الصفحة
+    window.addEventListener('load', function() {
+      createFlowers();
+      
+      // تشغيل القلوب تلقائياً كل 10 ثوانٍ
+      setInterval(createHearts, 10000);
+    });
+  </script>
 </body>
 </html>
