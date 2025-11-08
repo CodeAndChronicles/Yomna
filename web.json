@@ -1,0 +1,41 @@
+{
+  "projects": [
+    {
+      "title": "رسالة حب",
+      "link": "./html/love.html",
+      "photo": "https://images.unsplash.com/photo-1578319439584-104c94c0d44e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "description": "رسالة حب مكتوبة من القلب، كل كلمة فيها تعبر عن مشاعري تجاهك",
+      "featured": true
+    },
+    {
+      "title": "معرض الذكريات",
+      "link": "./html/gallery.html", 
+      "photo": "https://images.unsplash.com/photo-1529390079861-591de354faf5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "description": "رحلة في عالم ذكرياتنا الجميلة، كل صورة تحكي قصة حب"
+    },
+    {
+      "title": "العدّاد الرومانسي",
+      "link": "./html/countdown.html",
+      "photo": "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", 
+      "description": "عدّاد ينبض بقلبنا، يحسب كل اللحظات الجميلة التي عشناها"
+    },
+    {
+      "title": "مفاجآت الحب",
+      "link": "./html/surprises.html",
+      "photo": "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "description": "صندوق مفاجآت مليء بلمسات الحب والاهتمام"
+    },
+    {
+      "title": "قائمة الأمنيات",
+      "link": "./html/wishlist.html",
+      "photo": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "description": "كل الأمنيات والأحلام التي نريد تحقيقها معًا"
+    },
+    {
+      "title": "رحلة حبنا",
+      "link": "./html/journey.html",
+      "photo": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+      "description": "خريطة رحلتنا معًا، من البداية إلى ما لا نهاية"
+    }
+  ]
+}

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M😚Y - Mohamed & Yumna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink: #ff6b93;
+            --pink-light: #ffa5c5;
+            --pink-lighter: #ffd6e5;
+            --purple: #9c89ff;
+            --purple-light: #c4b9ff;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray: #6c757d;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, var(--pink-lighter) 0%, var(--purple-light) 100%);
+            color: #333;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* الهيدر */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 2.2rem;
+            color: var(--pink);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .love-text {
+            background: linear-gradient(45deg, var(--pink), var(--purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            padding: 8px;
+            border-radius: 50%;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            background: var(--pink-lighter);
+            color: var(--pink);
+        }
+
+        /* القلوب الطائرة */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 18px;
+            opacity: 0;
+            animation: float-heart 8s ease-in-out infinite;
+        }
+
+        @keyframes float-heart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* المحتوى الرئيسي */
+        main {
+            padding: 2.5rem 0;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .intro h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #444;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* الإشعارات */
+        .notifications {
+            margin-bottom: 2rem;
+        }
+
+        .notification {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            border-right: 4px solid var(--pink);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .notification-icon {
+            color: var(--pink);
+            font-size: 1.3rem;
+        }
+
+        /* شبكة المشاريع */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-icon {
+            color: var(--pink);
+            font-size: 1.3rem;
+        }
+
+        .project-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(45deg, var(--pink), var(--purple));
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 107, 147, 0.3);
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 147, 0.4);
+        }
+
+        .link-icon {
+            font-size: 1rem;
+        }
+
+        /* الفوتر */
+        footer {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .footer-content p {
+            color: var(--gray);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-heart {
+            color: var(--pink);
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* حالات التحميل والخطأ */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 107, 147, 0.3);
+            border-top: 3px solid var(--pink);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--gray);
+        }
+
+        .empty-icon {
+            font-size: 3.5rem;
+            color: var(--pink-light);
+            margin-bottom: 1rem;
+        }
+
+        /* تصميم الموبايل */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            h1 {
+                font-size: 1.4rem;
+            }
+            
+            .intro h2 {
+                font-size: 1.6rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* تأثيرات خاصة */
+        .featured {
+            position: relative;
+            border: 2px solid var(--pink-light);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--pink);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <!-- القلوب الطائرة -->
+    <div class="floating-hearts" id="floating-hearts"></div>
+    
+    <!-- الهيدر -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="ti ti-heart logo-icon"></i>
+                    <h1>Mohamed & <span class="love-text">Yumna</span></h1>
+                </div>
+                <div class="nav-actions">
+                    <button class="nav-btn" title="بحث">
+                        <i class="ti ti-search"></i>
+                    </button>
+                    <button class="nav-btn" title="إعدادات">
+                        <i class="ti ti-settings"></i>
+                    </button>
+                    <button class="nav-btn" title="معلومات">
+                        <i class="ti ti-info-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- المحتوى الرئيسي -->
+    <main class="container">
+        <!-- الإشعارات -->
+        <div class="notifications" id="notifications"></div>
+        
+        <!-- المقدمة -->
+        <section class="intro" id="intro"></section>
+        
+        <!-- المشاريع -->
+        <div class="projects-grid" id="projects-container">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <div>جاري تحميل المشاريع...</div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- الفوتر -->
+    <footer id="footer"></footer>
+
+    <script>
+        // إنشاء القلوب الطائرة
+        function createFloatingHearts() {
+            const container = document.getElementById('floating-hearts');
+            const heartCount = 12;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '💖';
+                
+                const left = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = 6 + Math.random() * 4;
+                
+                heart.style.left = `${left}%`;
+                heart.style.animationDelay = `${delay}s`;
+                heart.style.animationDuration = `${duration}s`;
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // تحميل المحتوى من ملفات JSON
+        async function loadContent() {
+            try {
+                // تحميل بيانات الموقع
+                const contentResponse = await fetch('./data.json');
+                const contentData = await contentResponse.json();
+                
+                // تحميل المشاريع
+                const projectsResponse = await fetch('./web.json');
+                const projectsData = await projectsResponse.json();
+                
+                // تعبئة المحتوى
+                populateContent(contentData);
+                displayProjects(projectsData.projects);
+                
+            } catch (error) {
+                console.error('خطأ في تحميل المحتوى:', error);
+                showErrorState();
+            }
+        }
+        
+        // تعبئة المحتوى الديناميكي
+        function populateContent(data) {
+            // تعبئة المقدمة
+            const intro = document.getElementById('intro');
+            if (data.intro) {
+                intro.innerHTML = `
+                    <h2>${data.intro.title}</h2>
+                    <p>${data.intro.description}</p>
+                `;
+            }
+            
+            // تعبئة الإشعارات
+            const notifications = document.getElementById('notifications');
+            if (data.notifications && data.notifications.length > 0) {
+                notifications.innerHTML = data.notifications.map(notification => `
+                    <div class="notification">
+                        <i class="ti ${notification.icon} notification-icon"></i>
+                        <div>
+                            <strong>${notification.title}</strong>
+                            <p>${notification.message}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            // تعبئة الفوتر
+            const footer = document.getElementById('footer');
+            if (data.footer) {
+                footer.innerHTML = `
+                    <div class="container">
+                        <div class="footer-content">
+                            <p>${data.footer.line1}</p>
+                            <p>${data.footer.line2}</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // عرض المشاريع
+        function displayProjects(projects) {
+            const container = document.getElementById('projects-container');
+            
+            if (!projects || projects.length === 0) {
+                showEmptyState();
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            projects.forEach((project, index) => {
+                const card = document.createElement('div');
+                card.classList.add('project-card');
+                if (project.featured) {
+                    card.classList.add('featured');
+                }
+                card.style.animationDelay = `${index * 0.1}s`;
+                
+                card.innerHTML = `
+                    ${project.featured ? '<span class="featured-badge"><i class="ti ti-star"></i> مميز</span>' : ''}
+                    <img src="${project.photo}" alt="${project.title}" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="ti ${getProjectIcon(project.title)} project-icon"></i>
+                            ${project.title}
+                        </h3>
+                        <p class="project-description">${project.description}</p>
+                        <a href="${project.link}" class="project-link" target="_blank">
+                            <i class="ti ti-external-link link-icon"></i>
+                            افتح المشروع
+                        </a>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+        
+        // تحديد الأيقونة المناسبة حسب عنوان المشروع
+        function getProjectIcon(title) {
+            if (title.includes('رسالة')) return 'ti-mail';
+            if (title.includes('معرض') || title.includes('صور')) return 'ti-photo';
+            if (title.includes('عدّاد') || title.includes('وقت')) return 'ti-clock';
+            if (title.includes('مفاجآت')) return 'ti-gift';
+            if (title.includes('أمنيات')) return 'ti-checklist';
+            if (title.includes('موسيقى')) return 'ti-music';
+            if (title.includes('رحلة')) return 'ti-plane';
+            return 'ti-heart';
+        }
+        
+        function showEmptyState() {
+            const container = document.getElementById('projects-container');
+            container.innerHTML = `
+                <div class="empty-state">
+                    <i class="ti ti-inbox empty-icon"></i>
+                    <h3>لا توجد مشاريع بعد</h3>
+                    <p>سيتم عرض المشاريع هنا بمجرد إضافتها</p>
+                </div>
+            `;
+        }
+        
+        function showErrorState() {
+            const container = document.getElementById('projects-container');
+            container.innerHTML = `
+                <div class="empty-state">
+                    <i class="ti ti-alert-circle empty-icon" style="color: #ff4757;"></i>
+                    <h3>حدث خطأ في التحميل</h3>
+                    <p>تأكد من اتصال الإنترنت وحاول مرة أخرى</p>
+                    <button class="project-link" onclick="loadContent()" style="margin-top: 1rem; border: none; cursor: pointer;">
+                        <i class="ti ti-refresh link-icon"></i>
+                        إعادة المحاولة
+                    </button>
+                </div>
+            `;
+        }
+        
+        // بدء التحميل عند فتح الصفحة
+        document.addEventListener('DOMContentLoaded', () => {
+            createFloatingHearts();
+            loadContent();
+        });
+    </script>
+</body>
+</html>
