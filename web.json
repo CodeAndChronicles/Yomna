@@ -1,17 +1,15 @@
-{
-  "projects": [
-    {
-      "title": "رسالة حب",
-      "link": "./html/love.html",
-      "photo": "https://images.unsplash.com/photo-1578319439584-104c94c0d44e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      "description": "رسالة حب مكتوبة من القلب، كل كلمة فيها تعبر عن مشاعري تجاهك",
-      "featured": true
-    }, 
-    {
-      "title": "العدّاد الرومانسي",
-      "link": "./countdow/countdown.html",
-      "photo": "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", 
-      "description": "عدّاد ينبض بقلبنا، يحسب كل اللحظات الجميلة التي عشناها"
-    }
-  ]
-}
+[
+  {
+    "title": "رسالة حب",
+    "link": "./html/love.html",
+    "photo": "https://images.unsplash.com/photo-1578319439584-104c94c0d44e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    "description": "رسالة حب مكتوبة من القلب، كل كلمة فيها تعبر عن مشاعري تجاهك",
+    "featured": true
+  },
+  {
+    "title": "العدّاد الرومانسي",
+    "link": "./countdow/countdown.html",
+    "photo": "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+    "description": "عدّاد ينبض بقلبنا، يحسب كل اللحظات الجميلة التي عشناها"
+  }
+]
