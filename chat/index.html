@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
+  <!-- استخدام Remix Icon للأيقونات -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ff6f91;
+      --primary-light: #ffdbe9;
+      --secondary: #ff9eb3;
+      --accent: #ff7c9d;
+      --background: #fff3f3;
+      --card-bg: #fff8f9;
+      --text: #5a3a3a;
+      --text-light: #8a5a5a;
+      --shadow: 0 4px 15px rgba(255, 150, 180, 0.25);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Tajawal", sans-serif;
+      background: var(--background);
+      margin: 0;
+      padding: 20px;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--primary);
+    }
+
+    .header p {
+      color: var(--text-light);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(255, 150, 180, 0.35);
+    }
+
+    .chat-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 15px;
+    }
+
+    .chat-item {
+      padding: 16px;
+      border-radius: 12px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s;
+      border-left: 4px solid var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .chat-item:hover {
+      background: var(--primary-light);
+      transform: translateX(-5px);
+    }
+
+    .chat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .chat-info {
+      flex: 1;
+    }
+
+    .chat-title {
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .chat-participants {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .chat-view {
+      display: none;
+      flex-direction: column;
+      height: 70vh;
+    }
+
+    .chat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--primary-light);
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+
+    .chat-header h2 {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .chat-header-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .back-button {
+      background: var(--secondary);
+      border: none;
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: "Tajawal", sans-serif;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: white;
+    }
+
+    .back-button:hover {
+      background: var(--accent);
+    }
+
+    .messages-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      background: white;
+      border-radius: 12px;
+    }
+
+    .message {
+      padding: 12px 16px;
+      border-radius: 18px;
+      margin: 5px 0;
+      max-width: 80%;
+      position: relative;
+      word-wrap: break-word;
+    }
+
+    .me {
+      background: var(--primary-light);
+      align-self: flex-end;
+      border-bottom-right-radius: 5px;
+      animation: slideInRight 0.4s ease;
+    }
+
+    .other {
+      background: var(--card-bg);
+      border: 1px solid var(--primary-light);
+      align-self: flex-start;
+      border-bottom-left-radius: 5px;
+      animation: slideInLeft 0.4s ease;
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .message-sender {
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 5px;
+      color: var(--primary);
+    }
+
+    .message-time {
+      font-size: 0.7rem;
+      color: var(--text-light);
+      text-align: right;
+      margin-top: 5px;
+    }
+
+    .dashboard {
+      display: none;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .stat-card:hover {
+      transform: scale(1.05);
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 10px 0;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .emojis-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+      justify-content: center;
+    }
+
+    .emoji-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      background: white;
+      border-radius: 10px;
+      min-width: 60px;
+    }
+
+    .emoji {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .emoji-count {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    .search-container {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 45px 12px 15px;
+      border: 1px solid var(--primary-light);
+      border-radius: 30px;
+      font-family: "Tajawal", sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(255, 111, 145, 0.2);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-light);
+    }
+
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .loader .heart {
+      width: 30px;
+      height: 30px;
+      background-color: #ff729f;
+      transform: rotate(-45deg);
+      animation: beat 0.8s infinite;
+      position: relative;
+    }
+    
+    .loader .heart::before,
+    .loader .heart::after {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: #ff729f;
+      border-radius: 50%;
+    }
+    
+    .loader .heart::before {
+      top: -15px;
+      left: 0;
+    }
+    
+    .loader .heart::after {
+      left: 15px;
+      top: 0;
+    }
+    
+    @keyframes beat {
+      0%, 40%, 80%, 100% { transform: scale(1) rotate(-45deg); }
+      20%, 60% { transform: scale(1.2) rotate(-45deg); }
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: var(--primary-light);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress {
+      height: 100%;
+      background: var(--primary);
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    .date-divider {
+      text-align: center;
+      margin: 15px 0;
+      position: relative;
+    }
+
+    .date-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--primary-light);
+      z-index: 1;
+    }
+
+    .date-divider span {
+      background: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 768px) {
+      .chat-list {
+        grid-template-columns: 1fr;
+      }
+      
+      .message {
+        max-width: 90%;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1><i class="ri-chat-3-fill"></i> محادثاتنا</h1>
+      <p>ذاكرة محادثاتنا الجميلة</p>
+    </div>
+
+    <!-- صوت لفتح الشات -->
+    <audio id="pop" preload="auto">
+      <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_77b89b19b7.mp3?filename=pop-94319.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="search-container">
+      <input type="text" class="search-input" id="searchInput" placeholder="ابحث في المحادثات...">
+      <i class="search-icon ri-search-line"></i>
+    </div>
+
+    <div class="chat-list" id="chatList">
+      <div class="loader">
+        <div class="heart"></div>
+        <p style="text-align:center;color:#ff6f91;">جاري تحميل المحادثات بكل الحب...</p>
+      </div>
+    </div>
+
+    <div class="chat-view card" id="chatView">
+      <div class="chat-header">
+        <button class="back-button" id="backButton">
+          <i class="ri-arrow-right-line"></i> العودة
+        </button>
+        <div class="chat-header-info">
+          <h2 id="chatTitle"></h2>
+        </div>
+        <button id="showDashboard" class="back-button">
+          <i class="ri-bar-chart-line"></i> الإحصائيات
+        </button>
+      </div>
+      <div class="messages-container" id="messages"></div>
+    </div>
+
+    <div class="dashboard card" id="dashboard">
+      <h3 style="color:var(--primary);"><i class="ri-heart-line"></i> إحصائيات الشات</h3>
+      <div class="stats-grid" id="statsGrid"></div>
+      <h4 style="margin-top:15px;">الإيموجيز المميزة:</h4>
+      <div class="emojis-container" id="emojisContainer"></div>
+    </div>
+  </div>
+
+  <script>
+    // العناصر الأساسية في الصفحة
+    const chatList = document.getElementById("chatList");
+    const chatView = document.getElementById("chatView");
+    const dashboard = document.getElementById("dashboard");
+    const messagesContainer = document.getElementById("messages");
+    const searchInput = document.getElementById("searchInput");
+    const backButton = document.getElementById("backButton");
+    const statsGrid = document.getElementById("statsGrid");
+    const emojisContainer = document.getElementById("emojisContainer");
+    const popSound = document.getElementById("pop");
+    
+    let currentChat = null;
+    let allChats = [];
+
+    // تحميل قائمة المحادثات
+    function loadChatList() {
+      fetch("data.json")
+        .then(res => res.json())
+        .then(data => {
+          allChats = data.chats;
+          renderChatList(allChats);
+        })
+        .catch(err => {
+          console.error("خطأ في تحميل البيانات:", err);
+          chatList.innerHTML = "<p class='no-results'>حدث خطأ في تحميل المحادثات</p>";
+        });
+    }
+
+    // عرض قائمة المحادثات
+    function renderChatList(chats) {
+      chatList.innerHTML = "";
+      
+      if (chats.length === 0) {
+        chatList.innerHTML = "<p class='no-results'>لا توجد محادثات تطابق بحثك</p>";
+        return;
+      }
+      
+      chats.forEach(chat => {
+        const div = document.createElement("div");
+        div.className = "chat-item";
+        div.innerHTML = `
+          <div class="chat-icon">
+            <i class="ri-chat-3-line"></i>
+          </div>
+          <div class="chat-info">
+            <div class="chat-title">${chat.title}</div>
+            <div class="chat-participants">${chat.displayNames.mySide} ↔ ${chat.displayNames.otherSide}</div>
+          </div>
+        `;
+        div.onclick = () => {
+          // تشغيل صوت عند فتح الشات
+          try {
+            popSound.currentTime = 0;
+            popSound.play();
+          } catch (e) {
+            console.log("تعذر تشغيل الصوت:", e);
+          }
+          loadChat(chat);
+        };
+        chatList.appendChild(div);
+      });
+    }
+
+    // تحميل محادثة محددة
+    async function loadChat(chat) {
+      currentChat = chat;
+      chatList.style.display = "none";
+      chatView.style.display = "flex";
+      document.getElementById("chatTitle").textContent = chat.title;
+      
+      // إضافة مؤشر تحميل مع قلب نابض
+      messagesContainer.innerHTML = `
+        <div class="loader">
+          <div class="heart"></div>
+          <p style="text-align:center;color:#ff6f91;">جاري تحميل الشات بكل الحب...</p>
+          <div class="progress-bar">
+            <div class="progress" id="progressBar"></div>
+          </div>
+        </div>
+      `;
+      
+      dashboard.style.display = "none";
+
+      try {
+        const res = await fetch(chat.path);
+        const text = await res.text();
+        const lines = text.split("\n");
+
+        let stats = {
+          total: 0, 
+          my: 0, 
+          other: 0, 
+          emojis: {},
+          dates: {},
+          myWordCount: 0,
+          otherWordCount: 0,
+          mySideName: chat.displayNames.mySide,
+          otherSideName: chat.displayNames.otherSide
+        };
+
+        let currentDate = '';
+        const fragment = document.createDocumentFragment();
+        const totalLines = lines.length;
+        let processedLines = 0;
+
+        // تحديث شريط التقدم
+        const progressBar = document.getElementById("progressBar");
+        
+        lines.forEach(line => {
+          const match = line.match(/^(\d{2}\/\d{2}\/\d{4}),\s(\d{2}:\d{2}) - ([^:]+): (.+)$/);
+          if (match) {
+            const date = match[1];
+            const time = match[2];
+            const sender = match[3];
+            const msg = match[4];
+            
+            // إضافة فاصل التاريخ إذا تغير
+            if (date !== currentDate) {
+              currentDate = date;
+              const dateDivider = document.createElement("div");
+              dateDivider.className = "date-divider";
+              dateDivider.innerHTML = `<span>${date}</span>`;
+              fragment.appendChild(dateDivider);
+            }
+            
+            const div = document.createElement("div");
+            div.className = "message " + (sender === chat.mySide ? "me" : "other");
+            
+            const displayName = sender === chat.mySide ? chat.displayNames.mySide : chat.displayNames.otherSide;
+            const displayMsg = msg;
+            
+            div.innerHTML = `
+              <div class="message-sender">${displayName}</div>
+              <div>${displayMsg}</div>
+              <div class="message-time">${time}</div>
+            `;
+            
+            fragment.appendChild(div);
+
+            // تحديث الإحصائيات
+            stats.total++;
+            if (sender === chat.mySide) {
+              stats.my++;
+              stats.myWordCount += msg.split(/\s+/).length;
+            } else {
+              stats.other++;
+              stats.otherWordCount += msg.split(/\s+/).length;
+            }
+
+            // تتبع التواريخ
+            stats.dates[date] = (stats.dates[date] || 0) + 1;
+
+            // تحليل الإيموجيز باستخدام الطريقة المحسنة
+            const emojiRegex = /\p{Extended_Pictographic}/gu;
+            const emojisInMsg = msg.match(emojiRegex) || [];
+            for (const emoji of emojisInMsg) {
+              stats.emojis[emoji] = (stats.emojis[emoji] || 0) + 1;
+            }
+          }
+          
+          // تحديث شريط التقدم
+          processedLines++;
+          if (progressBar) {
+            progressBar.style.width = `${(processedLines / totalLines) * 100}%`;
+          }
+        });
+
+        // حفظ الإحصائيات للعرض لاحقًا
+        currentChat.stats = stats;
+        
+        // إضافة جميع الرسائل مرة واحدة
+        messagesContainer.innerHTML = "";
+        messagesContainer.appendChild(fragment);
+        
+        // التمرير إلى أحدث رسالة
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      } catch (err) {
+        console.error("خطأ في تحميل المحادثة:", err);
+        messagesContainer.innerHTML = "<p class='no-results'>حدث خطأ في تحميل المحادثة</p>";
+      }
+    }
+
+    // عرض لوحة الإحصائيات
+    function showDashboard() {
+      if (!currentChat || !currentChat.stats) return;
+      
+      const stats = currentChat.stats;
+      
+      // عرض الإحصائيات الأساسية
+      statsGrid.innerHTML = `
+        <div class="stat-card">
+          <div class="stat-label">إجمالي الرسائل</div>
+          <div class="stat-value">${stats.total}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">${stats.mySideName || "أنت"}</div>
+          <div class="stat-value">${stats.my}</div>
+          <div class="stat-label">💌</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">${stats.otherSideName || "كتكوتك"}</div>
+          <div class="stat-value">${stats.other}</div>
+          <div class="stat-label">💬</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">كلمات ${stats.mySideName || "أنت"}</div>
+          <div class="stat-value">${stats.myWordCount}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">كلمات ${stats.otherSideName || "كتكوتك"}</div>
+          <div class="stat-value">${stats.otherWordCount}</div>
+        </div>
+      `;
+      
+      // عرض الإيموجيز
+      emojisContainer.innerHTML = "";
+      const frequentEmojis = Object.entries(stats.emojis)
+        .filter(([e, c]) => c > 5)
+        .sort((a, b) => b[1] - a[1]);
+      
+      if (frequentEmojis.length === 0) {
+        emojisContainer.innerHTML = "<p class='no-results'>مفيش 💞</p>";
+      } else {
+        frequentEmojis.forEach(([emoji, count]) => {
+          const emojiEl = document.createElement("div");
+          emojiEl.className = "emoji-item";
+          emojiEl.innerHTML = `
+            <div class="emoji">${emoji}</div>
+            <div class="emoji-count">×${count}</div>
+          `;
+          emojisContainer.appendChild(emojiEl);
+        });
+      }
+      
+      dashboard.style.display = "block";
+    }
+
+    // البحث في المحادثات
+    searchInput.addEventListener("input", function() {
+      const searchTerm = this.value.toLowerCase();
+      if (searchTerm.trim() === "") {
+        renderChatList(allChats);
+      } else {
+        const filteredChats = allChats.filter(chat => 
+          chat.title.toLowerCase().includes(searchTerm) ||
+          chat.displayNames.mySide.toLowerCase().includes(searchTerm) ||
+          chat.displayNames.otherSide.toLowerCase().includes(searchTerm)
+        );
+        renderChatList(filteredChats);
+      }
+    });
+
+    // إضافة معالجات الأحداث للأزرار
+    backButton.addEventListener("click", function() {
+      chatView.style.display = "none";
+      dashboard.style.display = "none";
+      chatList.style.display = "grid";
+      searchInput.value = "";
+      renderChatList(allChats);
+    });
+
+    document.getElementById("showDashboard").addEventListener("click", showDashboard);
+
+    // تحميل قائمة المحادثات عند فتح الصفحة
+    window.addEventListener('DOMContentLoaded', loadChatList);
+  </script>
+</body>
+</html>
