@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Letter 💌</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a18cd1);
+      background-size: 400% 400%;
+      animation: bgShift 10s ease infinite;
+      font-family: 'Cairo', sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 400px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    h1 {
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+      color: #fff;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bgShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>💌 إلى يُمنى</h1>
+    <p>
+      يمكن الكلام ميكفّيش أوصف قد إيه بحبك،  
+      بس كل حرف في الكود ده معمول عشانك.  
+      إنتي السبب و الإلهام و النور اللي بيخليني أكمّل ❤️  
+      بحبك يا يُمنى، دايمًا و للأبد 💞
+    </p>
+  </div>
+</body>
+</html>
