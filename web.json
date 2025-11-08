@@ -2,26 +2,32 @@
   {
     "title": "Love Letter",
     "link": "./html/love.html",
-    "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=90",
+    "photo": "https://images.unsplash.com/photo-1534070189983-5d1f69b08c79?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=90",
     "description": "A tender love letter filled with emotion — every word written straight from the heart.",
     "featured": true
   },
   {
     "title": "Romantic Countdown",
     "link": "./countdown/countdown.html",
-    "photo": "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=90",
-    "description": "A countdown that beats with love, marking every precious second we've shared together."
+    "photo": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=90",
+    "description": "A beautiful countdown that marks every cherished moment we've shared together."
   },
   {
     "title": "Gallery",
     "link": "./gallery/gallery.html",
-    "photo": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=90",
-    "description": "A beautiful collection of our moments — smiles, memories, and everything in between."
+    "photo": "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=90",
+    "description": "A curated gallery capturing our memories, laughter, and special moments together."
   },
   {
-    "title": "Chat",
+    "title": "Chat Room",
     "link": "./chat/index.html",
-    "photo": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=90",
-    "description": "A cozy space to talk, laugh, and share thoughts — just you and me in our little corner."
+    "photo": "https://images.unsplash.com/photo-1531497865140-efc63c16d978?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=90",
+    "description": "A cozy space to chat, laugh, and share thoughts — just us, in our private corner."
+  },
+  {
+    "title": "Media Hub",
+    "link": "./media/index.html",
+    "photo": "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=90",
+    "description": "Your go-to hub for videos, music, and all the media we enjoy together."
   }
 ]
