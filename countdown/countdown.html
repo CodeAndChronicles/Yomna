@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown - عدّاد الحب</title>
+    <title>Countdown - عدّاد الذكريات</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-pink: #ff6b9d;
-            --soft-pink: #ff9ac8;
-            --light-pink: #ffd6e8;
-            --dark-purple: #6a4c93;
-            --medium-purple: #8b6bc7;
-            --light-purple: #b39ddb;
-            --white: #ffffff;
-            --light-bg: #f8f9fa;
-            --dark-bg: #1a1a2e;
-            --text-dark: #2d3748;
-            --text-light: #718096;
+            --primary: #8B5CF6;
+            --primary-light: #A78BFA;
+            --primary-dark: #7C3AED;
+            --secondary: #06D6A0;
+            --secondary-light: #0EECB0;
+            --accent: #FF6B9D;
+            --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --card-border: rgba(255, 255, 255, 0.8);
+            --text-dark: #2D3748;
+            --text-gray: #718096;
+            --text-light: #4A5568;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.3);
-            --gradient-romantic: linear-gradient(135deg, #ff6b9d 0%, #6a4c93 100%);
-            --gradient-soft: linear-gradient(135deg, #ff9ac8 0%, #8b6bc7 100%);
-            --gradient-light: linear-gradient(135deg, #ffd6e8 0%, #b39ddb 100%);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         * {
@@ -33,649 +31,357 @@
         }
 
         body {
-            font-family: 'El Messiri', sans-serif;
-            background: var(--gradient-romantic);
+            font-family: 'Tajawal', sans-serif;
+            background: var(--background);
             min-height: 100vh;
             padding: 20px;
-            color: var(--white);
-            transition: all 0.4s ease;
+            color: var(--text-dark);
             line-height: 1.6;
         }
 
-        body.light-mode {
-            background: var(--gradient-light);
-            color: var(--text-dark);
-        }
-
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-        }
-
-        /* Date Time Bar */
-        .datetime-bar {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(25px);
-            border-radius: 25px;
-            padding: 25px 35px;
-            margin-bottom: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: var(--shadow-dark);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 25px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .datetime-bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient-soft);
-        }
-
-        .light-mode .datetime-bar {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: var(--shadow);
-        }
-
-        .date-section, .time-section {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .datetime-icon {
-            font-size: 2.2rem;
-            background: var(--gradient-soft);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-        }
-
-        .datetime-text {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        .date-label, .time-label {
-            font-size: 1rem;
-            color: var(--light-pink);
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .light-mode .date-label,
-        .light-mode .time-label {
-            color: var(--medium-purple);
-        }
-
-        .date-value, .time-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: var(--gradient-soft);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            line-height: 1.2;
-        }
-
-        .light-mode .date-value,
-        .light-mode .time-value {
-            background: var(--gradient-romantic);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .theme-toggle {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            padding: 15px 25px;
-            border-radius: 20px;
-            color: var(--white);
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: inherit;
-            font-size: 1rem;
-            font-weight: 600;
-            min-width: 160px;
-            justify-content: center;
-        }
-
-        .theme-toggle:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .light-mode .theme-toggle {
-            background: rgba(106, 76, 147, 0.1);
-            color: var(--dark-purple);
-            border: 1px solid rgba(106, 76, 147, 0.2);
-        }
-
-        .light-mode .theme-toggle:hover {
-            background: rgba(106, 76, 147, 0.2);
         }
 
         /* Header */
         .header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             padding: 40px 20px;
-            position: relative;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--gradient-soft);
-            border-radius: 2px;
         }
 
         .main-title {
-            font-size: 4.5rem;
-            background: var(--gradient-soft);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 3.2rem;
             font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .light-mode .main-title {
-            background: var(--gradient-romantic);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
         }
 
         .subtitle {
-            font-size: 1.5rem;
-            color: var(--light-pink);
-            margin-top: 15px;
-            font-weight: 500;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.2rem;
+            color: white;
+            font-weight: 400;
+            opacity: 0.9;
         }
 
-        .light-mode .subtitle {
-            color: var(--medium-purple);
-        }
-
-        /* Sections Container */
-        .sections-container {
+        /* Main Layout */
+        .main-content {
             display: grid;
-            gap: 50px;
-            margin-bottom: 60px;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
-        .section {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(25px);
-            border-radius: 30px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: var(--shadow-dark);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
         }
 
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-soft);
-        }
-
-        .light-mode .section {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+        /* Section Cards */
+        .section-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
             box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
         }
 
-        .section:hover {
+        .section-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .light-mode .section:hover {
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: var(--shadow-hover);
         }
 
         .section-header {
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .light-mode .section-header {
-            border-bottom: 2px solid rgba(106, 76, 147, 0.2);
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #F7FAFC;
         }
 
         .section-icon {
-            font-size: 3rem;
-            background: var(--gradient-soft);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-        }
-
-        .light-mode .section-icon {
-            background: var(--gradient-romantic);
+            font-size: 2rem;
+            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            color: var(--white);
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
         }
 
-        .light-mode .section-title {
-            color: var(--dark-purple);
-            text-shadow: none;
+        /* Person Cards */
+        .person-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #E2E8F0;
+            transition: all 0.3s ease;
         }
 
-        /* Cards Grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 30px;
+        .person-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
         }
 
-        .card {
-            width: 100%;
-            min-height: 320px;
-            background: var(--dark-bg);
-            position: relative;
+        .person-header {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border-radius: 25px;
-            box-shadow: var(--shadow-dark);
-            padding: 30px 25px;
-            text-align: center;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
-        .light-mode .card {
-            background: var(--white);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                from 0deg at 50% 50%,
-                var(--primary-pink) 0%,
-                var(--soft-pink) 25%,
-                var(--medium-purple) 55%,
-                var(--light-purple) 85%,
-                var(--primary-pink) 100%
-            );
-            animation: rotateAnim 12s linear infinite;
-            filter: blur(20px) brightness(1.1);
-            z-index: 0;
-        }
-
-        .light-mode .card::before {
-            background: conic-gradient(
-                from 0deg at 50% 50%,
-                var(--primary-pink) 0%,
-                var(--soft-pink) 25%,
-                var(--medium-purple) 55%,
-                var(--light-purple) 85%,
-                var(--primary-pink) 100%
-            );
-            filter: blur(15px) brightness(1.05);
-        }
-
-        .card::after {
-            content: "";
-            position: absolute;
-            inset: 5px;
-            background: var(--dark-bg);
-            border-radius: 20px;
-            z-index: 1;
-            box-shadow: inset 0 0 30px rgba(255, 154, 158, 0.15);
-        }
-
-        .light-mode .card::after {
-            background: var(--white);
-            box-shadow: inset 0 0 30px rgba(102, 126, 234, 0.08);
-        }
-
-        .card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-        }
-
-        .light-mode .card:hover {
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-        }
-
-        .card-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-        }
-
-        .card-header {
-            margin-bottom: 25px;
-            width: 100%;
-        }
-
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            background: var(--gradient-soft);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-        }
-
-        .light-mode .card-icon {
-            background: var(--gradient-romantic);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .card-title {
+        .person-icon {
             font-size: 1.8rem;
-            color: var(--white);
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-            margin-bottom: 8px;
-            font-weight: 700;
-            line-height: 1.3;
+            color: var(--primary);
         }
 
-        .light-mode .card-title {
-            color: var(--dark-purple);
-            text-shadow: none;
+        .person-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
         }
 
-        .card-subtitle {
-            color: var(--light-pink);
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .light-mode .card-subtitle {
-            color: var(--medium-purple);
-        }
-
-        /* Time Grids */
+        /* Time Grid */
         .time-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            width: 100%;
-            margin-top: 20px;
+            gap: 12px;
         }
 
-        .time-unit {
-            background: rgba(255, 255, 255, 0.12);
-            padding: 20px 12px;
-            border-radius: 16px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+        .time-item {
+            background: linear-gradient(135deg, #F7FAFC, #EDF2F7);
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            border: 1px solid #E2E8F0;
             transition: all 0.3s ease;
+            cursor: pointer;
             position: relative;
             overflow: hidden;
         }
 
-        .time-unit::before {
+        .time-item::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 3px;
-            background: var(--gradient-soft);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .time-unit:hover {
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        .time-item:hover::before {
+            opacity: 1;
         }
 
-        .light-mode .time-unit {
-            background: rgba(106, 76, 147, 0.08);
-            border: 1px solid rgba(106, 76, 147, 0.15);
+        .time-item.active {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            transform: scale(1.05);
         }
 
-        .light-mode .time-unit:hover {
-            background: rgba(106, 76, 147, 0.12);
+        .time-item.active::before {
+            opacity: 1;
         }
 
         .time-value {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
-            background: var(--gradient-soft);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: block;
-            line-height: 1;
-            margin-bottom: 8px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
         }
 
-        .light-mode .time-value {
-            background: var(--gradient-romantic);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .time-item.active .time-value {
+            color: white;
         }
 
         .time-label {
             font-size: 0.9rem;
-            color: var(--light-pink);
-            margin-top: 5px;
+            color: var(--text-gray);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .time-item.active .time-label {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Time Details */
+        .time-details {
+            display: none;
+            margin-top: 15px;
+            background: #F7FAFC;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #E2E8F0;
+        }
+
+        .time-item.active + .time-details {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            font-size: 0.95rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            color: var(--primary);
         }
 
-        .light-mode .time-label {
-            color: var(--medium-purple);
+        /* Event Card */
+        .event-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #E2E8F0;
+            margin-bottom: 20px;
         }
 
+        .event-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .event-icon {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        .event-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Event Time Grid */
         .event-time-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 12px;
-            width: 100%;
-            margin-top: 15px;
         }
 
-        .event-time-unit {
-            background: rgba(255, 255, 255, 0.12);
-            padding: 18px 10px;
-            border-radius: 14px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+        .event-time-item {
+            background: linear-gradient(135deg, #F7FAFC, #EDF2F7);
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            border: 1px solid #E2E8F0;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            cursor: pointer;
         }
 
-        .event-time-unit::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--gradient-soft);
-        }
-
-        .event-time-unit:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.18);
-        }
-
-        .light-mode .event-time-unit {
-            background: rgba(106, 76, 147, 0.08);
-            border: 1px solid rgba(106, 76, 147, 0.15);
-        }
-
-        .light-mode .event-time-unit:hover {
-            background: rgba(106, 76, 147, 0.12);
+        .event-time-item.active {
+            background: linear-gradient(135deg, var(--accent), #FF8BB3);
+            transform: scale(1.05);
         }
 
         .event-time-value {
             font-size: 1.8rem;
             font-weight: 700;
-            background: var(--gradient-soft);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: block;
-            line-height: 1;
-            margin-bottom: 6px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
         }
 
-        .light-mode .event-time-value {
-            background: var(--gradient-romantic);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .event-time-item.active .event-time-value {
+            color: white;
         }
 
         .event-time-label {
-            font-size: 0.8rem;
-            color: var(--light-pink);
-            margin-top: 4px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
-        .light-mode .event-time-label {
-            color: var(--medium-purple);
+        .event-time-item.active .event-time-label {
+            color: rgba(255, 255, 255, 0.9);
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 40px 20px;
-            color: var(--light-pink);
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            margin-top: 20px;
-            position: relative;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--gradient-soft);
-            border-radius: 2px;
-        }
-
-        .light-mode .footer {
-            color: var(--medium-purple);
-            border-top: 1px solid rgba(106, 76, 147, 0.2);
+            padding: 30px 20px;
+            color: white;
+            opacity: 0.8;
         }
 
         .update-time {
-            color: var(--soft-pink);
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .light-mode .update-time {
-            color: var(--dark-purple);
+            color: var(--secondary-light);
+            font-weight: 600;
         }
 
         .footer-text {
-            margin-top: 15px;
-            font-size: 1.1rem;
-            font-weight: 500;
+            margin-top: 10px;
+            font-size: 0.95rem;
         }
 
-        /* Loading States */
+        /* Loading */
         .loading {
             text-align: center;
-            padding: 50px 20px;
-            color: var(--soft-pink);
-            grid-column: 1 / -1;
-        }
-
-        .light-mode .loading {
-            color: var(--dark-purple);
+            padding: 40px 20px;
+            color: var(--primary);
         }
 
         .spinner {
-            border: 5px solid rgba(255, 255, 255, 0.3);
+            border: 3px solid #f3f3f3;
             border-radius: 50%;
-            border-top: 5px solid var(--soft-pink);
-            width: 60px;
-            height: 60px;
-            animation: spin 1.2s linear infinite;
-            margin: 0 auto 25px;
-        }
-
-        .light-mode .spinner {
-            border: 5px solid rgba(106, 76, 147, 0.2);
-            border-top: 5px solid var(--dark-purple);
-        }
-
-        /* Animations */
-        @keyframes rotateAnim {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
+            border-top: 3px solid var(--primary);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
         }
 
         @keyframes spin {
@@ -683,244 +389,139 @@
             100% { transform: rotate(360deg); }
         }
 
-        .heart-pulse {
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-            100% { transform: scale(1); }
-        }
-
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .cards-grid {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            }
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
-            .main-title {
-                font-size: 3.2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .cards-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .card {
-                min-height: 300px;
-            }
-            
-            .datetime-bar {
-                flex-direction: column;
-                text-align: center;
-                gap: 20px;
-                padding: 20px;
-            }
-            
-            .date-section, .time-section {
-                min-width: auto;
-                justify-content: center;
-            }
-            
-            .section {
-                padding: 30px 25px;
-            }
-            
-            .time-value {
-                font-size: 2rem;
-            }
-            
-            .event-time-value {
-                font-size: 1.6rem;
-            }
-        }
-
-        @media (max-width: 480px) {
             .main-title {
                 font-size: 2.5rem;
             }
             
-            .section {
-                padding: 25px 20px;
-            }
-            
-            .section-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-            
             .time-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 10px;
-            }
-            
-            .time-value {
-                font-size: 1.8rem;
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .event-time-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
             }
             
-            .card {
-                padding: 25px 20px;
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .time-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .event-time-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .person-header, .event-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
             }
         }
 
         /* Utility Classes */
-        .text-center {
-            text-align: center;
+        .fade-in {
+            animation: fadeIn 0.6s ease;
         }
 
-        .mb-20 {
-            margin-bottom: 20px;
-        }
-
-        .mt-20 {
-            margin-top: 20px;
-        }
-
-        .error {
-            color: #ff6b6b;
-            text-align: center;
-            padding: 20px;
-            background: rgba(255, 107, 107, 0.1);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 107, 107, 0.3);
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Date Time Bar -->
-        <div class="datetime-bar float-animation">
-            <div class="date-section">
-                <i class="fas fa-calendar-heart datetime-icon"></i>
-                <div class="datetime-text">
-                    <div class="date-label">التاريخ اليوم</div>
-                    <div id="current-date" class="date-value">--/--/----</div>
-                </div>
-            </div>
-            
-            <div class="time-section">
-                <i class="fas fa-clock datetime-icon"></i>
-                <div class="datetime-text">
-                    <div class="time-label">الوقت الحالي</div>
-                    <div id="current-time" class="time-value">--:--:--</div>
-                </div>
-            </div>
-            
-            <button class="theme-toggle" id="themeToggle">
-                <i class="fas fa-moon"></i>
-                <span>الوضع الليلي</span>
-            </button>
-        </div>
-
-        <header class="header">
-            <h1 class="main-title">Countdown - عدّاد الحب</h1>
-            <p class="subtitle">رحلة حبنا في كل لحظة تمر، وذكرى جميلة في كل ثانية</p>
+        <header class="header fade-in">
+            <h1 class="main-title">Countdown - عدّاد الذكريات</h1>
+            <p class="subtitle">احتفظ بكل اللحظات الجميلة في مكان واحد</p>
         </header>
 
-        <div class="sections-container">
-            <section class="section">
+        <div class="main-content">
+            <!-- Birthdays Section -->
+            <div class="section-card fade-in">
                 <div class="section-header">
-                    <i class="fas fa-heart section-icon heart-pulse"></i>
-                    <h2 class="section-title">أعمارنا الجميلة</h2>
+                    <i class="fas fa-birthday-cake section-icon"></i>
+                    <h2 class="section-title">الأعمار</h2>
                 </div>
-                <div id="birthdays-container" class="cards-grid">
+                <div id="birthdays-container">
                     <div class="loading">
                         <div class="spinner"></div>
                         جاري تحميل الأعمار...
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section class="section">
+            <!-- Events Section -->
+            <div class="section-card fade-in">
                 <div class="section-header">
-                    <i class="fas fa-star section-icon"></i>
-                    <h2 class="section-title">لحظاتنا الخاصة</h2>
+                    <i class="fas fa-heart section-icon"></i>
+                    <h2 class="section-title">الذكريات</h2>
                 </div>
-                <div id="events-container" class="cards-grid">
+                <div id="events-container">
                     <div class="loading">
                         <div class="spinner"></div>
                         جاري تحميل الأحداث...
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
 
         <footer class="footer">
             <p>آخر تحديث: <span id="last-update" class="update-time">--:--:--</span></p>
-            <p class="footer-text">كل ثانية معك هي ذكرى تظل محفورة في القلب</p>
+            <p class="footer-text">كل لحظة تمر تزيد قصة حبنا جمالاً ❤️</p>
         </footer>
     </div>
 
     <script>
-        // تحديث التاريخ والوقت
-        function updateDateTime() {
-            const now = new Date();
-            
-            // تحديث التاريخ
-            const dateOptions = { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            };
-            document.getElementById('current-date').textContent = now.toLocaleDateString('ar-SA', dateOptions);
-            
-            // تحديث الوقت
-            const timeOptions = { 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                second: '2-digit',
-                hour12: true 
-            };
-            document.getElementById('current-time').textContent = now.toLocaleTimeString('ar-SA', timeOptions);
+        // دالة لجلب البيانات من ملف JSON
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error loading data:', error);
+                return {
+                    birthdays: [
+                        {
+                            "name": "Mohamed",
+                            "date": "2009-04-29"
+                        },
+                        {
+                            "name": "Yomna", 
+                            "date": "2009-08-18"
+                        }
+                    ],
+                    events: [
+                        {
+                            "name": "Love",
+                            "datetime": "2025-04-02T22:12:00"
+                        }
+                    ]
+                };
+            }
         }
 
-        // تحديث التاريخ والوقت كل ثانية
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
-
-        // تبديل الوضع الليلي/النهاري
-        document.getElementById('themeToggle').addEventListener('click', function() {
-            document.body.classList.toggle('light-mode');
-            const icon = this.querySelector('i');
-            const text = this.querySelector('span');
-            
-            if (document.body.classList.contains('light-mode')) {
-                icon.className = 'fas fa-sun';
-                text.textContent = 'الوضع النهاري';
-            } else {
-                icon.className = 'fas fa-moon';
-                text.textContent = 'الوضع الليلي';
-            }
-        });
-
-        // دالة لحساب العمر
-        function calculateAge(birthDate) {
+        // دالة لحساب العمر/المدة
+        function calculateDuration(targetDate) {
             const now = new Date();
+            const birthDate = new Date(targetDate);
+            
             let years = now.getFullYear() - birthDate.getFullYear();
             let months = now.getMonth() - birthDate.getMonth();
             let days = now.getDate() - birthDate.getDate();
@@ -934,152 +535,265 @@
                 months += 12;
             }
 
-            return { years, months, days };
+            // حسابات إضافية
+            const totalMonths = years * 12 + months;
+            const totalDays = Math.floor((now - birthDate) / (1000 * 60 * 60 * 24));
+            const totalWeeks = Math.floor(totalDays / 7);
+            const totalHours = totalDays * 24;
+            const totalMinutes = totalHours * 60;
+            const totalSeconds = totalMinutes * 60;
+
+            return { 
+                years, 
+                months, 
+                days,
+                totalMonths,
+                totalWeeks,
+                totalDays,
+                totalHours,
+                totalMinutes,
+                totalSeconds
+            };
         }
 
         // دالة لحساب مدة الأحداث
-        function relationshipDuration(startDate) {
+        function calculateEventDuration(startDate) {
             const now = new Date();
-            let diff = now - startDate;
+            const eventDate = new Date(startDate);
+            
+            let years = now.getFullYear() - eventDate.getFullYear();
+            let months = now.getMonth() - eventDate.getMonth();
+            let days = now.getDate() - eventDate.getDate();
+            let hours = now.getHours() - eventDate.getHours();
+            let minutes = now.getMinutes() - eventDate.getMinutes();
+            let seconds = now.getSeconds() - eventDate.getSeconds();
 
-            const seconds = Math.floor(diff / 1000) % 60;
-            const minutes = Math.floor(diff / (1000 * 60)) % 60;
-            const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-            let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            if (seconds < 0) {
+                minutes--;
+                seconds += 60;
+            }
+            if (minutes < 0) {
+                hours--;
+                minutes += 60;
+            }
+            if (hours < 0) {
+                days--;
+                hours += 24;
+            }
+            if (days < 0) {
+                months--;
+                days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+            }
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
 
-            const years = Math.floor(days / 365);
-            days -= years * 365;
-            const months = Math.floor(days / 30);
-            days -= months * 30;
+            // حسابات إضافية
+            const totalDays = Math.floor((now - eventDate) / (1000 * 60 * 60 * 24));
+            const totalHours = Math.floor((now - eventDate) / (1000 * 60 * 60));
+            const totalMinutes = Math.floor((now - eventDate) / (1000 * 60));
+            const totalSeconds = Math.floor((now - eventDate) / 1000);
+            const totalWeeks = Math.floor(totalDays / 7);
+            const totalMonths = years * 12 + months;
 
-            return { years, months, days, hours, minutes, seconds };
+            return { 
+                years, 
+                months, 
+                days, 
+                hours, 
+                minutes, 
+                seconds,
+                totalDays,
+                totalHours,
+                totalMinutes,
+                totalSeconds,
+                totalWeeks,
+                totalMonths
+            };
+        }
+
+        // نظام تفاعل مبسط وثابت
+        function setupInteractions() {
+            document.addEventListener('click', function(e) {
+                // التعامل مع عناصر الوقت في قسم الأعمار
+                const timeItem = e.target.closest('.time-item');
+                if (timeItem) {
+                    const allTimeItems = timeItem.parentElement.querySelectorAll('.time-item');
+                    const allDetails = timeItem.parentElement.parentElement.querySelectorAll('.time-details');
+                    
+                    // إغلاق جميع العناصر الأخرى
+                    allTimeItems.forEach(item => item.classList.remove('active'));
+                    allDetails.forEach(detail => detail.style.display = 'none');
+                    
+                    // فتح العنصر المختار
+                    timeItem.classList.add('active');
+                    const details = timeItem.nextElementSibling;
+                    if (details && details.classList.contains('time-details')) {
+                        details.style.display = 'block';
+                    }
+                    return;
+                }
+
+                // التعامل مع عناصر الوقت في قسم الأحداث
+                const eventTimeItem = e.target.closest('.event-time-item');
+                if (eventTimeItem) {
+                    const allEventTimeItems = eventTimeItem.parentElement.querySelectorAll('.event-time-item');
+                    
+                    // تبديل حالة العنصر المختار فقط
+                    allEventTimeItems.forEach(item => {
+                        if (item !== eventTimeItem) {
+                            item.classList.remove('active');
+                        }
+                    });
+                    
+                    eventTimeItem.classList.toggle('active');
+                    return;
+                }
+
+                // إغلاق التفاصيل عند النقر خارجها
+                if (!e.target.closest('.time-item') && !e.target.closest('.time-details') && 
+                    !e.target.closest('.event-time-item')) {
+                    document.querySelectorAll('.time-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    document.querySelectorAll('.time-details').forEach(detail => {
+                        detail.style.display = 'none';
+                    });
+                    document.querySelectorAll('.event-time-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                }
+            });
         }
 
         // تحميل البيانات وعرضها
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('data.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const birthdaysContainer = document.getElementById('birthdays-container');
-                    birthdaysContainer.innerHTML = '';
-                    
-                    if (data.birthdays && data.birthdays.length > 0) {
-                        data.birthdays.forEach(person => {
-                            const age = calculateAge(new Date(person.date));
-                            const card = createBirthdayCard(person.name, age);
-                            birthdaysContainer.appendChild(card);
-                        });
-                    } else {
-                        birthdaysContainer.innerHTML = '<div class="error">لا توجد بيانات للأعمار</div>';
-                    }
-
-                    const eventsContainer = document.getElementById('events-container');
-                    eventsContainer.innerHTML = '';
-                    
-                    if (data.events && data.events.length > 0) {
-                        data.events.forEach(event => {
-                            const card = createEventCard(event);
-                            eventsContainer.appendChild(card);
-                            startEventCountdown(card, event.datetime);
-                        });
-                    } else {
-                        eventsContainer.innerHTML = '<div class="error">لا توجد بيانات للأحداث</div>';
-                    }
-                    
-                    document.getElementById('last-update').textContent = new Date().toLocaleString('ar-SA');
-                })
-                .catch(error => {
-                    console.error('حدث خطأ:', error);
-                    document.getElementById('birthdays-container').innerHTML = 
-                        '<div class="error">حدث خطأ في تحميل البيانات. تأكد من وجود ملف data.json</div>';
-                    document.getElementById('events-container').innerHTML = '';
-                });
+        document.addEventListener('DOMContentLoaded', async function() {
+            // إعداد التفاعلات
+            setupInteractions();
+            
+            // تحميل البيانات
+            const data = await loadData();
+            
+            // عرض البيانات
+            displayBirthdays(data.birthdays);
+            displayEvents(data.events);
+            
+            // تحديث الوقت
+            updateTime();
+            setInterval(updateTime, 1000);
         });
 
-        // إنشاء كارت العمر
-        function createBirthdayCard(name, age) {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `
-                <div class="card-content">
-                    <div class="card-header">
-                        <i class="fas fa-user-circle card-icon"></i>
-                        <h3 class="card-title">${name}</h3>
-                        <p class="card-subtitle">عمر الحب والذكريات</p>
+        function displayBirthdays(birthdays) {
+            const container = document.getElementById('birthdays-container');
+            container.innerHTML = '';
+
+            if (birthdays.length === 0) {
+                container.innerHTML = '<div class="loading">لا توجد بيانات للأعمار</div>';
+                return;
+            }
+
+            birthdays.forEach(person => {
+                const duration = calculateDuration(person.date);
+                
+                const personCard = document.createElement('div');
+                personCard.className = 'person-card fade-in';
+                personCard.innerHTML = `
+                    <div class="person-header">
+                        <i class="fas ${getPersonIcon(person.name)} person-icon"></i>
+                        <h3 class="person-name">${person.name}</h3>
                     </div>
                     <div class="time-grid">
-                        <div class="time-unit">
-                            <span class="time-value">${age.years}</span>
-                            <span class="time-label">سنة</span>
+                        <div class="time-item">
+                            <div class="time-value">${duration.years}</div>
+                            <div class="time-label">سنة</div>
                         </div>
-                        <div class="time-unit">
-                            <span class="time-value">${age.months}</span>
-                            <span class="time-label">شهر</span>
+                        <div class="time-item">
+                            <div class="time-value">${duration.months}</div>
+                            <div class="time-label">شهر</div>
                         </div>
-                        <div class="time-unit">
-                            <span class="time-value">${age.days}</span>
-                            <span class="time-label">يوم</span>
+                        <div class="time-item">
+                            <div class="time-value">${duration.days}</div>
+                            <div class="time-label">يوم</div>
                         </div>
                     </div>
-                </div>
-            `;
-            return card;
+                    <div class="time-details">
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <span class="detail-label">إجمالي الأشهر:</span>
+                                <span class="detail-value">${duration.totalMonths} شهر</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">إجمالي الأسابيع:</span>
+                                <span class="detail-value">${duration.totalWeeks} أسبوع</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">إجمالي الأيام:</span>
+                                <span class="detail-value">${duration.totalDays} يوم</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">إجمالي الساعات:</span>
+                                <span class="detail-value">${duration.totalHours} ساعة</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(personCard);
+            });
         }
 
-        // إنشاء كارت الحدث
-        function createEventCard(event) {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `
-                <div class="card-content">
-                    <div class="card-header">
-                        <i class="fas ${getEventIcon(event.name)} card-icon"></i>
-                        <h3 class="card-title">${event.name}</h3>
-                        <p class="card-subtitle">رحلة حب مستمرة</p>
-                    </div>
-                    <div class="event-time-grid" id="event-${event.name.replace(/\s+/g, '-')}">
-                        <!-- سيتم ملؤه ديناميكياً -->
-                    </div>
-                </div>
-            `;
-            return card;
+        function displayEvents(events) {
+            const container = document.getElementById('events-container');
+            container.innerHTML = '';
+
+            if (events.length === 0) {
+                container.innerHTML = '<div class="loading">لا توجد بيانات للأحداث</div>';
+                return;
+            }
+
+            events.forEach(event => {
+                const eventCard = document.createElement('div');
+                eventCard.className = 'event-card fade-in';
+                container.appendChild(eventCard);
+                
+                startEventCountdown(eventCard, event);
+            });
         }
 
-        // بدء العد التنازلي للحدث
-        function startEventCountdown(card, datetime) {
-            const timeGrid = card.querySelector('.event-time-grid');
-            
+        function startEventCountdown(eventCard, event) {
             function updateEvent() {
-                const duration = relationshipDuration(new Date(datetime));
-                timeGrid.innerHTML = `
-                    <div class="event-time-unit">
-                        <span class="event-time-value">${duration.years}</span>
-                        <span class="event-time-label">سنة</span>
+                const duration = calculateEventDuration(event.datetime);
+                
+                eventCard.innerHTML = `
+                    <div class="event-header">
+                        <i class="fas ${getEventIcon(event.name)} event-icon"></i>
+                        <h3 class="event-name">${event.name}</h3>
                     </div>
-                    <div class="event-time-unit">
-                        <span class="event-time-value">${duration.months}</span>
-                        <span class="event-time-label">شهر</span>
-                    </div>
-                    <div class="event-time-unit">
-                        <span class="event-time-value">${duration.days}</span>
-                        <span class="event-time-label">يوم</span>
-                    </div>
-                    <div class="event-time-unit">
-                        <span class="event-time-value">${duration.hours}</span>
-                        <span class="event-time-label">ساعة</span>
-                    </div>
-                    <div class="event-time-unit">
-                        <span class="event-time-value">${duration.minutes}</span>
-                        <span class="event-time-label">دقيقة</span>
-                    </div>
-                    <div class="event-time-unit">
-                        <span class="event-time-value">${duration.seconds}</span>
-                        <span class="event-time-label">ثانية</span>
+                    <div class="event-time-grid">
+                        <div class="event-time-item">
+                            <div class="event-time-value">${duration.years}</div>
+                            <div class="event-time-label">سنة</div>
+                        </div>
+                        <div class="event-time-item">
+                            <div class="event-time-value">${duration.months}</div>
+                            <div class="event-time-label">شهر</div>
+                        </div>
+                        <div class="event-time-item">
+                            <div class="event-time-value">${duration.days}</div>
+                            <div class="event-time-label">يوم</div>
+                        </div>
+                        <div class="event-time-item">
+                            <div class="event-time-value">${duration.hours}</div>
+                            <div class="event-time-label">ساعة</div>
+                        </div>
+                        <div class="event-time-item">
+                            <div class="event-time-value">${duration.minutes}</div>
+                            <div class="event-time-label">دقيقة</div>
+                        </div>
+                        <div class="event-time-item">
+                            <div class="event-time-value">${duration.seconds}</div>
+                            <div class="event-time-label">ثانية</div>
+                        </div>
                     </div>
                 `;
             }
@@ -1088,27 +802,30 @@
             setInterval(updateEvent, 1000);
         }
 
-        // الحصول على الأيقونة المناسبة للحدث
-        function getEventIcon(eventName) {
+        // دالة للحصول على الأيقونة المناسبة للشخص
+        function getPersonIcon(name) {
             const icons = {
-                'علاقة': 'fa-heart',
-                'حب': 'fa-heart',
-                'زواج': 'fa-ring',
-                'لقاء': 'fa-users',
-                'ذكرى': 'fa-calendar-heart',
-                'سفر': 'fa-plane',
-                'منزل': 'fa-home',
-                'عمل': 'fa-briefcase',
-                'تخرج': 'fa-graduation-cap'
+                'mohamed': 'fa-male',
+                'yomna': 'fa-female'
             };
             
             for (const [key, icon] of Object.entries(icons)) {
-                if (eventName.includes(key)) {
+                if (name.toLowerCase().includes(key)) {
                     return icon;
                 }
             }
             
+            return 'fa-user';
+        }
+
+        // دالة للحصول على الأيقونة المناسبة للحدث
+        function getEventIcon(eventName) {
             return 'fa-heart';
+        }
+
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('last-update').textContent = now.toLocaleString('ar-SA');
         }
     </script>
 </body>
