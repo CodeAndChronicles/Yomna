@@ -1,12 +1,4 @@
 [
-  { "src": "yomna/1.jpg", "title": "لحظة مع يُمنى" },
-  { "src": "yomna/2.jpg", "title": "ابتسامة تُشرق" },
-  { "src": "yomna/3.jpg", "title": "نظرة رقيقة" },
-  { "src": "yomna/4.jpg", "title": "ذكرى جميلة" },
-  { "src": "yomna/5.jpg", "title": "لحظة خاصة" },
-  { "src": "yomna/6.jpg", "title": "فرحة دافئة" },
-  { "src": "yomna/7.jpg", "title": "لمسة أنيقة" },
-  { "src": "yomna/8.jpg", "title": "إطلالة ساحرة" }, 
   { "src": "me/1.jpg", "title": "Mohamed " }, 
   { "src": "me/2.jpg", "title": "Mohamed" } 
 ]
