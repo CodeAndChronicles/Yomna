@@ -137,6 +137,39 @@
     }
   }
   
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+  }
+  
+  .tab {
+    padding: 10px 20px;
+    border-radius: 12px;
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .tab.active {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+  }
+  
+  .tab-content {
+    display: none;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  
   form.grid{
     display: flex;
     flex-direction: column;
@@ -725,6 +758,159 @@
     50% { opacity: 0.5; }
     100% { opacity: 1; }
   }
+  
+  /* تسجيل الصوت */
+  .recorder-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .recorder-display {
+    margin: 20px 0;
+    padding: 20px;
+    background: var(--bg);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+  }
+  
+  .recorder-visualizer {
+    height: 60px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+  }
+  
+  .visualizer-bar {
+    width: 4px;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: height 0.1s ease;
+  }
+  
+  .recorder-time {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 10px 0;
+  }
+  
+  .recorder-controls {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .record-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .record-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(236, 72, 153, 0.4);
+  }
+  
+  .record-btn.recording {
+    background: #ef4444;
+    animation: pulse 1.5s infinite;
+  }
+  
+  .audio-clips {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .audio-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--bg);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  
+  .audio-info {
+    flex: 1;
+  }
+  
+  .audio-name {
+    font-weight: 600;
+    color: var(--text);
+  }
+  
+  .audio-meta {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  
+  /* تصميم جديد للعرض */
+  .recording-timer {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin: 10px 0;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+  }
+  
+  .clip-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  
+  .action-btn {
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .action-btn:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-1px);
+  }
+  
+  .recording-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+  }
+  
+  .pulse-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ef4444;
+    animation: pulse 1.5s infinite;
+  }
 </style>
 </head>
 <body>
@@ -732,91 +918,145 @@
   <header>
     <div class="logo"><i class="fas fa-cloud-upload-alt"></i></div>
     <div>
-      <h1>Media - رفع الملفات إلى تليجرام</h1>
-      <p class="lead">رفع صور وفيديوهات بأعلى جودة، مع إضافة نص وصفي، ومتابعة تقدم الرفع في نافذة منبثقة. تصميم عصري أنيق.</p>
+      <h1>Media - رفع الملفات وتسجيل الصوت</h1>
+      <p class="lead">رفع صور وفيديوهات أو تسجيل صوتي بأعلى جودة، مع إضافة نص وصفي، ومتابعة تقدم الرفع في نافذة منبثقة.</p>
     </div>
   </header>
 
+  <div class="tabs">
+    <button class="tab active" data-tab="files">📁 رفع الملفات</button>
+    <button class="tab" data-tab="record">🎤 تسجيل صوتي</button>
+  </div>
+
   <main style="margin-top:24px">
-    <form id="mainForm" class="grid" onsubmit="return false;">
-      <div class="card">
-        <label><i class="fas fa-folder-open"></i> اختر الملفات (صور/فيديو) - يمكن اختيار عدة ملفات مرة واحدة</label>
-        <div class="uploader" id="uploader">
-          <div class="upload-icon">
-            <i class="fas fa-cloud-upload-alt"></i>
-          </div>
-          <div style="max-width:100%">
-            <strong style="font-size:18px">اسحب الملفات وأسقطها هنا أو انقر لاختيار الملفات</strong>
-            <div class="meta" style="margin-top:10px">
-              <span><i class="fas fa-check-circle"></i> يدعم JPG, PNG, HEIC, MP4, MOV</span>
-              <span>•</span>
-              <span><i class="fas fa-download"></i> الإرسال كملف للحفاظ على الجودة الأصلية</span>
+    <!-- تبويب رفع الملفات -->
+    <div id="files" class="tab-content active">
+      <form id="mainForm" class="grid" onsubmit="return false;">
+        <div class="card">
+          <label><i class="fas fa-folder-open"></i> اختر الملفات (صور/فيديو) - يمكن اختيار عدة ملفات مرة واحدة</label>
+          <div class="uploader" id="uploader">
+            <div class="upload-icon">
+              <i class="fas fa-cloud-upload-alt"></i>
+            </div>
+            <div style="max-width:100%">
+              <strong style="font-size:18px">اسحب الملفات وأسقطها هنا أو انقر لاختيار الملفات</strong>
+              <div class="meta" style="margin-top:10px">
+                <span><i class="fas fa-check-circle"></i> يدعم JPG, PNG, HEIC, MP4, MOV</span>
+                <span>•</span>
+                <span><i class="fas fa-download"></i> الإرسال كملف للحفاظ على الجودة الأصلية</span>
+              </div>
+            </div>
+            <div style="margin-top:16px" class="controls">
+              <label class="btn" for="filesInput"><i class="fas fa-plus"></i> اختيار الملفات</label>
+              <input id="filesInput" type="file" multiple accept="image/*,video/*" />
+              <button id="sendAllBtn" class="btn send-btn"><i class="fas fa-paper-plane"></i> إرسال جميع الملفات</button>
             </div>
           </div>
-          <div style="margin-top:16px" class="controls">
-            <label class="btn" for="filesInput"><i class="fas fa-plus"></i> اختيار الملفات</label>
-            <input id="filesInput" type="file" multiple accept="image/*,video/*" />
-            <button id="sendAllBtn" class="btn send-btn"><i class="fas fa-paper-plane"></i> إرسال جميع الملفات</button>
+
+          <div class="warning-note">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>ملاحظة: الحد الأقصى لحجم الملف هو 50MB (قيد تليجرام للبوتات). الملفات الأكبر قد يتم رفضها.</div>
+          </div>
+
+          <div style="margin-top:20px">
+            <label><i class="fas fa-pen"></i> النص الوصفي (سيظهر مع كل ملف)</label>
+            <textarea id="caption" class="caption" placeholder="اكتب النص الوصفي هنا..."></textarea>
+          </div>
+
+          <div style="margin-top:20px">
+            <label><i class="fas fa-list"></i> الملفات المختارة</label>
+            <div id="fileList" class="file-list">
+              <div class="empty-state" id="emptyState">
+                <i class="fas fa-folder-open"></i>
+                <div>لم تقم باختيار أي ملفات بعد</div>
+                <div style="font-size:13px; margin-top:8px">اسحب الملفات إلى المنطقة أعلاه أو انقر على "اختيار الملفات"</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="warning-note">
-          <i class="fas fa-exclamation-triangle"></i>
-          <div>ملاحظة: الحد الأقصى لحجم الملف هو 50MB (قيد تليجرام للبوتات). الملفات الأكبر قد يتم رفضها.</div>
-        </div>
+        <aside>
+          <div class="card" style="display:flex;flex-direction:column;gap:16px;height:100%">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-size:14px;color:var(--muted)"><i class="fas fa-info-circle"></i> تفاصيل النظام</div>
+                <div style="font-weight:600; margin-top:4px">جودة عالية • واجهة متجاوبة • تتبع التقدم</div>
+              </div>
+              <div style="text-align:left">
+                <div style="font-size:13px;color:var(--muted)">النمط</div>
+                <div style="font-weight:700;color:var(--accent)">فاتح</div>
+              </div>
+            </div>
 
-        <div style="margin-top:20px">
-          <label><i class="fas fa-pen"></i> النص الوصفي (سيظهر مع كل ملف)</label>
-          <textarea id="caption" class="caption" placeholder="اكتب النص الوصفي هنا..."></textarea>
-        </div>
+            <div class="stats">
+              <div class="stat-item">
+                <div class="stat-value" id="fileCount">0</div>
+                <div class="stat-label">الملفات</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value" id="totalSize">0</div>
+                <div class="stat-label">الحجم الإجمالي</div>
+              </div>
+            </div>
 
-        <div style="margin-top:20px">
-          <label><i class="fas fa-list"></i> الملفات المختارة</label>
-          <div id="fileList" class="file-list">
-            <div class="empty-state" id="emptyState">
-              <i class="fas fa-folder-open"></i>
-              <div>لم تقم باختيار أي ملفات بعد</div>
-              <div style="font-size:13px; margin-top:8px">اسحب الملفات إلى المنطقة أعلاه أو انقر على "اختيار الملفات"</div>
+            <div style="margin-top:auto; display:flex; gap:12px">
+              <button id="clearBtn" class="btn" style="background:var(--bg);color:var(--text);flex:1"><i class="fas fa-trash"></i> مسح الكل</button>
+            </div>
+          </div>
+        </aside>
+      </form>
+    </div>
+
+    <!-- تبويب تسجيل الصوت -->
+    <div id="record" class="tab-content">
+      <div class="card">
+        <div class="recorder-container">
+          <h2><i class="fas fa-microphone"></i> مسجل الصوت</h2>
+          <p class="lead">سجل صوتك واحفظه محليًا ثم أرسله إلى تليجرام عندما تريد</p>
+          
+          <div class="recorder-display">
+            <div class="recording-indicator" id="recordingIndicator" style="display:none">
+              <div class="pulse-dot"></div>
+              <div style="color:#ef4444;font-weight:600">جاري التسجيل...</div>
+            </div>
+            <div class="recorder-time" id="recorderTime">00:00</div>
+            <div class="recording-timer" id="recordingTimer" style="display:none">0 ثانية</div>
+            <div class="recorder-visualizer" id="visualizer"></div>
+            <div class="recorder-controls">
+              <button class="record-btn" id="recordBtn">
+                <i class="fas fa-microphone"></i>
+              </button>
+              <button class="btn" id="stopRecordBtn" style="display:none;background:#ef4444">
+                <i class="fas fa-stop"></i> إيقاف التسجيل
+              </button>
+              <button class="btn" id="clearRecordingsBtn" style="background:var(--bg);color:var(--text)">
+                <i class="fas fa-trash"></i> مسح التسجيلات
+              </button>
+            </div>
+          </div>
+
+          <div class="warning-note">
+            <i class="fas fa-info-circle"></i>
+            <div>التسجيلات تحفظ تلقائيًا في المتصفح ويمكنك رفعها إلى تليجرام عندما تريد</div>
+          </div>
+
+          <div style="margin-top:20px">
+            <label><i class="fas fa-headphones"></i> التسجيلات المحفوظة</label>
+            <div id="audioClips" class="audio-clips">
+              <div class="empty-state">
+                <i class="fas fa-microphone-slash"></i>
+                <div>لا توجد تسجيلات بعد</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <aside>
-        <div class="card" style="display:flex;flex-direction:column;gap:16px;height:100%">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div>
-              <div style="font-size:14px;color:var(--muted)"><i class="fas fa-info-circle"></i> تفاصيل النظام</div>
-              <div style="font-weight:600; margin-top:4px">جودة عالية • واجهة متجاوبة • تتبع التقدم</div>
-            </div>
-            <div style="text-align:left">
-              <div style="font-size:13px;color:var(--muted)">النمط</div>
-              <div style="font-weight:700;color:var(--accent)">فاتح</div>
-            </div>
-          </div>
-
-          <div class="stats">
-            <div class="stat-item">
-              <div class="stat-value" id="fileCount">0</div>
-              <div class="stat-label">الملفات</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-value" id="totalSize">0</div>
-              <div class="stat-label">الحجم الإجمالي</div>
-            </div>
-          </div>
-
-          <div style="margin-top:auto; display:flex; gap:12px">
-            <button id="clearBtn" class="btn" style="background:var(--bg);color:var(--text);flex:1"><i class="fas fa-trash"></i> مسح الكل</button>
-          </div>
-        </div>
-      </aside>
-    </form>
-
-    <footer>
-      <div><i class="fas fa-heart" style="color:var(--accent)"></i> تصميم عصري أنيق - جاهز للاستخدام الفعلي</div>
-    </footer>
+    </div>
   </main>
+
+  <footer>
+    <div><i class="fas fa-heart" style="color:var(--accent)"></i> تصميم عصري أنيق - جاهز للاستخدام الفعلي</div>
+  </footer>
 </div>
 
 <!-- نافذة التقدم -->
@@ -839,14 +1079,28 @@
 </div>
 
 <script>
-// Media - رفع الملفات إلى تليجرام
-// - يقرأ data.json في نفس المجلد للحصول على token و chat_id
-// - يدعم السحب والإفلات
-// - يرسل كل ملف كـ sendDocument للحفاظ على الجودة
-// - يعرض نافذة منبثقة مع شريط تقدم لكل ملف
-
-class MediaUploader {
+// Media - رفع الملفات وتسجيل الصوت
+class MediaApp {
   constructor() {
+    this.initTabs();
+    this.initFileUploader();
+    this.initAudioRecorder();
+  }
+  
+  initTabs() {
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        const tabId = tab.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+  }
+  
+  initFileUploader() {
     this.filesInput = document.getElementById('filesInput');
     this.uploader = document.getElementById('uploader');
     this.fileListEl = document.getElementById('fileList');
@@ -866,11 +1120,10 @@ class MediaUploader {
     this.files = [];
     this.uploadInProgress = false;
     
-    this.initEventListeners();
+    this.initFileEventListeners();
   }
   
-  initEventListeners() {
-    // السحب والإفلات
+  initFileEventListeners() {
     this.uploader.addEventListener('dragover', (e) => { 
       e.preventDefault(); 
       this.uploader.classList.add('dragover');
@@ -886,25 +1139,52 @@ class MediaUploader {
       if(e.dataTransfer.files) this.addFiles(e.dataTransfer.files);
     });
     
-    // اختيار الملفات
     this.filesInput.addEventListener('change', (e) => this.addFiles(e.target.files));
-    
-    // إرسال الملفات
     this.sendAllBtn.addEventListener('click', (e) => this.handleUpload(e));
-    
-    // مسح الكل
     this.clearBtn.addEventListener('click', () => this.clearFiles());
-    
-    // التحكم بالنافذة المنبثقة
     this.closeOverlay.addEventListener('click', () => this.cancelUpload());
     this.doneBtn.addEventListener('click', () => this.closeOverlayFunc());
   }
+  
+  initAudioRecorder() {
+    this.recordBtn = document.getElementById('recordBtn');
+    this.stopRecordBtn = document.getElementById('stopRecordBtn');
+    this.clearRecordingsBtn = document.getElementById('clearRecordingsBtn');
+    this.recorderTime = document.getElementById('recorderTime');
+    this.recordingTimer = document.getElementById('recordingTimer');
+    this.recordingIndicator = document.getElementById('recordingIndicator');
+    this.visualizer = document.getElementById('visualizer');
+    this.audioClips = document.getElementById('audioClips');
+    
+    this.mediaRecorder = null;
+    this.audioChunks = [];
+    this.recording = false;
+    this.recordingTime = 0;
+    this.recordingInterval = null;
+    this.audioContext = null;
+    this.analyser = null;
+    this.audioClipsList = [];
+    
+    this.initAudioEventListeners();
+    this.loadAudioClips();
+    this.initVisualizer();
+  }
+  
+  initAudioEventListeners() {
+    this.recordBtn.addEventListener('click', () => this.startRecording());
+    this.stopRecordBtn.addEventListener('click', () => this.stopRecording());
+    this.clearRecordingsBtn.addEventListener('click', () => this.clearRecordings());
+  }
+  
+  // ========== ملفات رفع الملفات ==========
   
   uid() { 
     return Math.random().toString(36).slice(2,9); 
   }
   
   async loadConfig() {
+    if (this.DATA) return this.DATA;
+    
     try {
       const res = await fetch('./data.json', {cache: 'no-store'});
       if(!res.ok) throw new Error('فشل تحميل data.json — تأكد من وجوده في نفس المجلد');
@@ -912,6 +1192,7 @@ class MediaUploader {
       if(!this.DATA.bot_token || !this.DATA.chat_id) {
         throw new Error('data.json ناقص bot_token أو chat_id');
       }
+      return this.DATA;
     } catch(err) {
       alert('خطأ: ' + err.message + '\nتأكد من وجود data.json في نفس المجلد وكتابته بشكل صحيح.');
       throw err;
@@ -1027,7 +1308,6 @@ class MediaUploader {
       return; 
     }
     
-    // بدء الإرسال
     this.openOverlay();
     this.uploadInProgress = true;
     await this.sendFilesSequential();
@@ -1074,7 +1354,6 @@ class MediaUploader {
     
     for(const item of [...this.files]) {
       const f = item.file;
-      // إنشاء صف في الواجهة
       const row = document.createElement('div');
       row.className = 'prog-row';
       row.id = 'row-' + item.id;
@@ -1100,7 +1379,6 @@ class MediaUploader {
       `;
       this.progressList.appendChild(row);
       
-      // التحقق من الحجم (حد تليجرام ~50MB) -> تحذير مع المحاولة
       const MAX = 50 * 1024 * 1024;
       if(f.size > MAX) {
         const warn = document.createElement('div');
@@ -1112,7 +1390,6 @@ class MediaUploader {
       }
       
       try {
-        // تحديث الحالة إلى جاري الرفع
         const statusDot = row.querySelector('.status-dot');
         statusDot.classList.remove('pending');
         statusDot.classList.add('uploading');
@@ -1126,7 +1403,6 @@ class MediaUploader {
           if(percentEl) percentEl.textContent = percent.toFixed(0) + '%';
         });
         
-        // في حالة النجاح
         const st = document.getElementById('status-' + item.id);
         const statusDotSuccess = row.querySelector('.status-dot');
         if(st) {
@@ -1161,7 +1437,6 @@ class MediaUploader {
     this.doneBtn.style.display = 'inline-block';
     this.closeOverlay.style.display = 'none';
     
-    // عرض رسالة تلخيصية
     if (successfulUploads === total) {
       this.overallInfo.innerHTML = `<span style="color:var(--success)">تم رفع جميع الملفات بنجاح! (${successfulUploads}/${total})</span>`;
     } else {
@@ -1174,7 +1449,6 @@ class MediaUploader {
       const token = this.DATA.bot_token.trim();
       const chat_id = this.DATA.chat_id;
       
-      // استخدام sendDocument للحفاظ على الجودة الأصلية (للصور والفيديوهات)
       const url = `https://api.telegram.org/bot${encodeURIComponent(token)}/sendDocument`;
       
       const form = new FormData();
@@ -1217,17 +1491,257 @@ class MediaUploader {
         reject(new Error('انتهت مهلة الاتصال'));
       };
       
-      // تعيين وقت انتظار 5 دقائق للملفات الكبيرة
       xhr.timeout = 300000;
-      
       xhr.send(form);
     });
+  }
+  
+  // ========== ملفات تسجيل الصوت ==========
+  
+  async startRecording() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      this.mediaRecorder = new MediaRecorder(stream);
+      this.audioChunks = [];
+      
+      this.mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          this.audioChunks.push(event.data);
+        }
+      };
+      
+      this.mediaRecorder.onstop = () => {
+        const audioBlob = new Blob(this.audioChunks, { type: 'audio/mpeg' });
+        this.saveAudioRecording(audioBlob);
+        stream.getTracks().forEach(track => track.stop());
+        
+        // إيقاف المؤقت وإزالته
+        clearInterval(this.recordingInterval);
+        this.recordingTimer.style.display = 'none';
+        this.recordingIndicator.style.display = 'none';
+      };
+      
+      // بدء المؤقت
+      let seconds = 0;
+      this.recordingTimer.style.display = 'inline-block';
+      this.recordingIndicator.style.display = 'flex';
+      this.recordingInterval = setInterval(() => {
+        seconds++;
+        this.recordingTimer.textContent = `${seconds} ثانية`;
+      }, 1000);
+      
+      this.mediaRecorder.start();
+      this.recording = true;
+      this.recordBtn.classList.add('recording');
+      this.stopRecordBtn.style.display = 'inline-block';
+      
+      this.startVisualizer(stream);
+      
+    } catch (error) {
+      alert('خطأ في الوصول إلى الميكروفون: ' + error.message);
+    }
+  }
+  
+  stopRecording() {
+    if (this.mediaRecorder && this.recording) {
+      this.mediaRecorder.stop();
+      this.recording = false;
+      this.recordBtn.classList.remove('recording');
+      this.stopRecordBtn.style.display = 'none';
+    }
+  }
+  
+  initVisualizer() {
+    for (let i = 0; i < 30; i++) {
+      const bar = document.createElement('div');
+      bar.className = 'visualizer-bar';
+      bar.style.height = '5px';
+      this.visualizer.appendChild(bar);
+    }
+  }
+  
+  startVisualizer(stream) {
+    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    this.analyser = this.audioContext.createAnalyser();
+    const source = this.audioContext.createMediaStreamSource(stream);
+    source.connect(this.analyser);
+    this.analyser.fftSize = 64;
+    
+    const bufferLength = this.analyser.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+    
+    const updateVisualizer = () => {
+      if (!this.recording) return;
+      
+      this.analyser.getByteFrequencyData(dataArray);
+      const bars = this.visualizer.querySelectorAll('.visualizer-bar');
+      
+      bars.forEach((bar, i) => {
+        const value = dataArray[i] || 0;
+        const height = Math.max(5, value / 2);
+        bar.style.height = `${height}px`;
+        bar.style.background = `linear-gradient(to top, var(--accent), var(--accent-2))`;
+      });
+      
+      requestAnimationFrame(updateVisualizer);
+    };
+    
+    updateVisualizer();
+  }
+  
+  stopVisualizer() {
+    const bars = this.visualizer.querySelectorAll('.visualizer-bar');
+    bars.forEach(bar => {
+      bar.style.height = '5px';
+      bar.style.background = 'var(--muted)';
+    });
+    
+    if (this.audioContext) {
+      this.audioContext.close();
+      this.audioContext = null;
+    }
+  }
+  
+  saveAudioRecording(audioBlob) {
+    const audioId = this.uid();
+    const name = `rec_${Date.now()}.mp3`;
+    
+    const audioItem = {
+      id: audioId,
+      name: name,
+      blob: audioBlob,
+      size: audioBlob.size,
+      duration: this.recordingTime,
+      createdAt: new Date().toISOString(),
+      status: 'pending'
+    };
+    
+    this.audioClipsList.push(audioItem);
+    localStorage.setItem('audioRecordings', JSON.stringify(this.audioClipsList));
+    
+    this.renderAudioItem(audioItem);
+  }
+  
+  loadAudioClips() {
+    const saved = localStorage.getItem('audioRecordings');
+    if (saved) {
+      this.audioClipsList = JSON.parse(saved);
+      this.audioClipsList.forEach(audio => this.renderAudioItem(audio));
+    }
+  }
+  
+  renderAudioItem(audio) {
+    const emptyState = this.audioClips.querySelector('.empty-state');
+    if (emptyState) emptyState.style.display = 'none';
+    
+    const audioItem = document.createElement('div');
+    audioItem.className = 'audio-item';
+    audioItem.dataset.id = audio.id;
+    
+    audioItem.innerHTML = `
+      <div style="font-size:24px;color:var(--accent)">
+        <i class="fas fa-microphone"></i>
+      </div>
+      <div class="audio-info">
+        <div class="audio-name">${audio.name}</div>
+        <div class="audio-meta">
+          ${this.formatBytes(audio.size)} • ${new Date(audio.createdAt).toLocaleString('ar-EG')}
+        </div>
+      </div>
+      <div class="clip-actions">
+        <button class="action-btn play-audio">
+          <i class="fas fa-play"></i> تشغيل
+        </button>
+        <button class="action-btn send-audio">
+          <i class="fas fa-paper-plane"></i> إرسال
+        </button>
+        <button class="action-btn delete-audio">
+          <i class="fas fa-trash"></i> حذف
+        </button>
+      </div>
+    `;
+    
+    audioItem.querySelector('.play-audio').addEventListener('click', () => {
+      this.playAudio(audio.blob);
+    });
+    
+    audioItem.querySelector('.send-audio').addEventListener('click', async () => {
+      if(!confirm('ترفع التسجيل للبوت؟')) return;
+      await this.uploadAudioRecording(audio);
+    });
+    
+    audioItem.querySelector('.delete-audio').addEventListener('click', () => {
+      this.deleteAudio(audio.id, audioItem);
+    });
+    
+    this.audioClips.appendChild(audioItem);
+  }
+  
+  playAudio(blob) {
+    const audioURL = URL.createObjectURL(blob);
+    const audio = new Audio(audioURL);
+    audio.play();
+  }
+  
+  deleteAudio(audioId, audioElement) {
+    if (confirm('هل تريد حذف هذا التسجيل؟')) {
+      this.audioClipsList = this.audioClipsList.filter(audio => audio.id !== audioId);
+      localStorage.setItem('audioRecordings', JSON.stringify(this.audioClipsList));
+      audioElement.remove();
+      
+      if (this.audioClipsList.length === 0) {
+        this.audioClips.innerHTML = '<div class="empty-state"><i class="fas fa-microphone-slash"></i><div>لا توجد تسجيلات بعد</div></div>';
+      }
+    }
+  }
+  
+  clearRecordings() {
+    if (this.audioClipsList.length === 0) return;
+    
+    if (confirm('هل تريد مسح جميع التسجيلات؟')) {
+      this.audioClipsList = [];
+      localStorage.removeItem('audioRecordings');
+      this.audioClips.innerHTML = '<div class="empty-state"><i class="fas fa-microphone-slash"></i><div>لا توجد تسجيلات بعد</div></div>';
+    }
+  }
+  
+  async uploadAudioRecording(audioItem) {
+    try {
+      await this.loadConfig();
+      
+      const token = this.DATA.bot_token.trim();
+      const chat_id = this.DATA.chat_id;
+      const url = `https://api.telegram.org/bot${encodeURIComponent(token)}/sendDocument`;
+      
+      const form = new FormData();
+      form.append('chat_id', chat_id);
+      form.append('caption', `تسجيل صوتي - ${new Date(audioItem.createdAt).toLocaleString('ar-EG')}`);
+      form.append('document', audioItem.blob, audioItem.name);
+      
+      const response = await fetch(url, {
+        method: 'POST',
+        body: form
+      });
+      
+      const result = await response.json();
+      
+      if (result.ok) {
+        alert('تم رفع التسجيل بنجاح!');
+        console.log('تم رفع التسجيل بنجاح:', audioItem.name);
+      } else {
+        alert('فشل رفع التسجيل: ' + (result.description || 'خطأ غير معروف'));
+        console.error('فشل رفع التسجيل:', result.description);
+      }
+    } catch (error) {
+      alert('خطأ في رفع التسجيل: ' + error.message);
+      console.error('خطأ في رفع التسجيل:', error);
+    }
   }
 }
 
 // تهيئة التطبيق عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', () => {
-  new MediaUploader();
+  new MediaApp();
 });
 </script>
 </body>
