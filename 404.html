@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة غير موجودة - Lost in Love</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffc8dd, #cdb4ff);
+            padding: 20px;
+            color: #5a3d7a;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(15px);
+            padding: 40px 35px;
+            border-radius: 22px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .icon {
+            font-size: 90px;
+            margin-bottom: 20px;
+            color: #ff6b95;
+            animation: pulse 1.8s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #7a4c93;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ff6b95, #cdb4ff);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-btn i {
+            margin-left: 8px;
+            font-size: 20px;
+        }
+
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .change-message-btn {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50px;
+            padding: 8px 15px;
+            font-size: 14px;
+            color: #7a4c93;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .change-message-btn:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 480px) {
+            .glass-card {
+                padding: 30px 20px;
+            }
+            
+            .icon {
+                font-size: 70px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="glass-card">
+            <div class="icon">
+                <i class="fas fa-heart-broken"></i>
+            </div>
+            <h1>أوه لا! يبدو أنك ضعت</h1>
+            <p id="message">شكلّك تهت شوية…<br>بس ولا يهمك، نرجّعك مكانك ❤️</p>
+            <a href="#" class="home-btn">
+                ارجع للصفحة الرئيسية
+                <i class="fas fa-home"></i>
+            </a>
+        </div>
+        
+        <div class="message-container">
+            <button class="change-message-btn" onclick="changeMessage()">تغيير الرسالة</button>
+        </div>
+    </div>
+
+    <script>
+        const messages = [
+            "شكلّك تهت شوية…<br>بس ولا يهمك، نرجّعك مكانك ❤️",
+            "Umm… ده مش الطريق يا حلوتي 😅<br>تعالي نرجّعك للصفحة الصح 💗",
+            "الصفحة دي مش موجودة…<br>بس احنا موجودين نرجعك للـ Home 😊",
+            "يبدو أن الحب ضاع بين الصفحات…<br>تعال نرجعك للبداية 💕",
+            "أينما كنت، سنرجعك إلينا<br>لأنك مهم بالنسبة لنا 🌸"
+        ];
+        
+        let currentMessageIndex = 0;
+        
+        function changeMessage() {
+            currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+            document.getElementById('message').innerHTML = messages[currentMessageIndex];
+        }
+    </script>
+</body>
+</html>
