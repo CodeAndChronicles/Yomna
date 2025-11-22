@@ -1,33 +1,32 @@
 [
   {
-    "title": "Love Letter",
+    "title": "رسالة حب",
     "link": "./html/love.html",
-    "photo": "https://images.unsplash.com/photo-1534070189983-5d1f69b08c79?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=90",
-    "description": "A tender love letter filled with emotion — every word written straight from the heart.",
-    "featured": true
+    "icon": "fa-heart"
   },
   {
-    "title": "Romantic Countdown",
-    "link": "./countdown/countdown.html",
-    "photo": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=90",
-    "description": "A beautiful countdown that marks every cherished moment we've shared together."
+    "title": "العد التنازلي الرومانسي",
+    "link": "./countdown/countdown.html", 
+    "icon": "fa-clock"
   },
   {
-    "title": "Gallery",
+    "title": "معرض الذكريات",
     "link": "./gallery/gallery.html",
-    "photo": "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=90",
-    "description": "A curated gallery capturing our memories, laughter, and special moments together."
+    "icon": "fa-images"
   },
   {
-    "title": "Chat Room",
+    "title": "غرفة الدردشة",
     "link": "./chat/index.html",
-    "photo": "https://images.unsplash.com/photo-1531497865140-efc63c16d978?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=90",
-    "description": "A cozy space to chat, laugh, and share thoughts — just us, in our private corner."
+    "icon": "fa-comments"
   },
   {
-    "title": "Media Hub",
-    "link": "./media/index.html",
-    "photo": "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=90",
-    "description": "Your go-to hub for videos, music, and all the media we enjoy together."
+    "title": "المركز الإعلامي",
+    "link": "./media/index.html", 
+    "icon": "fa-play-circle"
+  },
+  {
+    "title": "قائمة الأغاني المفضلة",
+    "link": "",
+    "icon": "fa-music"
   }
 ]
