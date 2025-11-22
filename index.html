@@ -3,25 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M😚Y - Mohamed & Yumna</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Ma7ame7o&Y</title>
+    <script src="https://unpkg.com/phosphor-icons"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo+Play:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lateef:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #E75480;
-            --primary-light: #FF69B4;
-            --primary-dark: #C2185B;
-            --secondary: #FFB6C1;
-            --accent: #FFD700;
-            --background: #FFF8F8;
-            --surface: #FFFFFF;
-            --text: #4A2C2C;
-            --text-light: #8B5E5E;
-            --border: #FFE4E9;
-            --shadow: 0 4px 20px rgba(230, 84, 128, 0.15);
-            --shadow-hover: 0 8px 30px rgba(230, 84, 128, 0.25);
+            --primary-color: #FFB6C1;
+            --secondary-color: #FFD1DC;
+            --background-color: #FFF5F5;
+            --card-color: #FFFFFF;
+            --text-color: #5A5A5A;
+            --header-color: #FFB6C1;
+            --sidebar-width: 320px;
+            --font-main: 'Tajawal', sans-serif;
+            --font-alt: 'Cairo Play', sans-serif;
+            --font-3: 'El Messiri', sans-serif;
+            --font-4: 'Changa', sans-serif;
+            --font-5: 'Amiri', serif;
+            --font-6: 'Lateef', serif;
+            --font-7: 'Rubik', sans-serif;
+            --font-8: 'Almarai', sans-serif;
+            --font-9: 'Reem Kufi', sans-serif;
+            --font-10: 'Scheherazade New', serif;
+            --font-11: 'Noto Naskh Arabic', serif;
+            --font-12: 'Cairo Play', sans-serif;
+            --border-radius: 16px;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+            --font-size: 14px;
+        }
+
+        /* Dark Mode */
+        .dark-mode {
+            --primary-color: #FF85A2;
+            --secondary-color: #FFB6C1;
+            --background-color: #1a1a1a;
+            --card-color: #2d2d2d;
+            --text-color: #e0e0e0;
+            --header-color: #FF85A2;
+        }
+
+        /* الثيمات الرومانسية الفاتحة */
+        .theme-1 {
+            --primary-color: #FFB6C1;
+            --secondary-color: #FFD1DC;
+            --background-color: #FFF5F5;
+            --card-color: #FFFFFF;
+            --text-color: #5A5A5A;
+            --header-color: #FFB6C1;
+        }
+
+        .theme-2 {
+            --primary-color: #B5EAD7;
+            --secondary-color: #C7CEEA;
+            --background-color: #F0F8FF;
+            --card-color: #FFFFFF;
+            --text-color: #5A5A5A;
+            --header-color: #B5EAD7;
+        }
+
+        .theme-3 {
+            --primary-color: #FFDAC1;
+            --secondary-color: #E2F0CB;
+            --background-color: #FFFBF0;
+            --card-color: #FFFFFF;
+            --text-color: #5A5A5A;
+            --header-color: #FFDAC1;
+        }
+
+        .theme-4 {
+            --primary-color: #C7CEEA;
+            --secondary-color: #B5EAD7;
+            --background-color: #F8F9FF;
+            --card-color: #FFFFFF;
+            --text-color: #5A5A5A;
+            --header-color: #C7CEEA;
+        }
+
+        .theme-5 {
+            --primary-color: #FF9AA2;
+            --secondary-color: #FFB7B2;
+            --background-color: #FFF0F0;
+            --card-color: #FFFFFF;
+            --text-color: #5A5A5A;
+            --header-color: #FF9AA2;
+        }
+
+        .theme-6 {
+            --primary-color: #A0E7E5;
+            --secondary-color: #B4F8C8;
+            --background-color: #F0FFFD;
+            --card-color: #FFFFFF;
+            --text-color: #5A5A5A;
+            --header-color: #A0E7E5;
+        }
+
+        /* الخطوط */
+        .font-1 { font-family: var(--font-main); }
+        .font-2 { font-family: var(--font-alt); }
+        .font-3 { font-family: var(--font-3); }
+        .font-4 { font-family: var(--font-4); }
+        .font-5 { font-family: var(--font-5); }
+        .font-6 { font-family: var(--font-6); }
+        .font-7 { font-family: var(--font-7); }
+        .font-8 { font-family: var(--font-8); }
+        .font-9 { font-family: var(--font-9); }
+        .font-10 { font-family: var(--font-10); }
+        .font-11 { font-family: var(--font-11); }
+        .font-12 { font-family: var(--font-12); }
+
+        /* أحجام الخطوط */
+        .font-size-small {
+            --font-size: 12px;
+        }
+
+        .font-size-medium {
+            --font-size: 14px;
+        }
+
+        .font-size-large {
+            --font-size: 16px;
+        }
+
+        .font-size-xlarge {
+            --font-size: 18px;
         }
 
         * {
@@ -31,768 +147,1545 @@
         }
 
         body {
-            font-family: 'El Messiri', sans-serif;
-            background: var(--background);
-            color: var(--text);
+            font-family: var(--font-main);
+            background-color: var(--background-color);
+            color: var(--text-color);
             min-height: 100vh;
-            line-height: 1.6;
+            position: relative;
             overflow-x: hidden;
+            transition: var(--transition);
+            font-size: var(--font-size);
         }
 
-        /* Loading Animation */
-        .loading-screen {
+        /* زر القائمة */
+        .menu-btn {
+            position: fixed;
+            left: 15px;
+            top: 15px;
+            border: none;
+            background: var(--primary-color);
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            z-index: 101;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            color: white;
+        }
+
+        .menu-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* الشريط العلوي */
+        .header {
+            height: 65px;
+            background: var(--header-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* القائمة الجانبية المحسنة */
+        .sidebar {
+            position: fixed;
+            left: -100%;
+            top: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            overflow-y: auto;
+            z-index: 200;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .dark-mode .sidebar {
+            background: rgba(45, 45, 45, 0.95);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode .sidebar .top {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar .title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .sidebar .close {
+            background: rgba(0, 0, 0, 0.05);
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: var(--text-color);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .dark-mode .sidebar .close {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar .close:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .sidebar .item {
+            margin-bottom: 20px;
+        }
+
+        .drop-head {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0,0,0,0.05);
+            padding: 15px 12px;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            color: var(--text-color);
+            font-family: inherit;
+            margin-bottom: 10px;
+        }
+
+        .dark-mode .drop-head {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .drop-head:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .drop-head i {
+            transition: var(--transition);
+        }
+
+        .drop-head.active i:last-child {
+            transform: rotate(180deg);
+        }
+
+        .drop-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding-right: 15px;
+        }
+
+        .drop-body.open {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .drop-body::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .drop-body::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+            border-radius: 10px;
+        }
+
+        .drop-body::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        .drop-body label {
+            display: block;
+            margin: 15px 0 10px 0;
+            font-weight: 500;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .colors {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .color {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .color:hover {
+            transform: scale(1.1);
+        }
+
+        .color.active {
+            border-color: var(--text-color);
+            transform: scale(1.1);
+        }
+
+        .c1 { background: #FFB6C1; }
+        .c2 { background: #B5EAD7; }
+        .c3 { background: #FFDAC1; }
+        .c4 { background: #C7CEEA; }
+        .c5 { background: #FF9AA2; }
+        .c6 { background: #A0E7E5; }
+
+        .fonts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .font-btn {
+            padding: 10px 8px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            text-align: center;
+            background: rgba(255,255,255,0.8);
+            transition: var(--transition);
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .dark-mode .font-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-color);
+        }
+
+        .font-btn:hover {
+            border-color: var(--primary-color);
+        }
+
+        .font-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* إعدادات إضافية */
+        .extra-settings {
+            margin-top: 20px;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .dark-mode .setting-item {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .setting-label {
+            font-weight: 500;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 45px;
+            height: 22px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dark-mode .toggle-switch {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .toggle-switch.active {
+            background: var(--primary-color);
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .toggle-switch.active::after {
+            left: 25px;
+        }
+
+        /* حجم الخط */
+        .font-size-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .font-size-btn {
+            background: rgba(255,255,255,0.8);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.8rem;
+        }
+
+        .dark-mode .font-size-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-color);
+        }
+
+        .font-size-btn:hover {
+            border-color: var(--primary-color);
+        }
+
+        .font-size-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* تحسينات الإشعارات */
+        .notifications-container {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+
+        .notifications-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .notifications-container::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+            border-radius: 10px;
+        }
+
+        .dark-mode .notifications-container::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .notifications-container::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        .notifications-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .notifications-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .clear-all-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .clear-all-btn:hover {
+            background: #ff4757;
+        }
+
+        .notification-item {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin-bottom: 10px;
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .dark-mode .notification-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .notification-item.hidden {
+            opacity: 0.5;
+            background: rgba(255,255,255,0.4);
+        }
+
+        .dark-mode .notification-item.hidden {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .notification-item:hover {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .dark-mode .notification-item:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .notification-content {
+            margin-bottom: 12px;
+        }
+
+        .notification-message {
+            line-height: 1.4;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .notification-time {
+            font-size: 0.75rem;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dark-mode .notification-time {
+            color: #aaa;
+        }
+
+        .notification-time i {
+            font-size: 0.7rem;
+        }
+
+        .notification-actions {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-start;
+        }
+
+        .notification-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: var(--transition);
+            font-family: inherit;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-delete {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .btn-hide {
+            background: #ffd93d;
+            color: #333;
+        }
+
+        .btn-delete:hover {
+            background: #ff4757;
+        }
+
+        .btn-hide:hover {
+            background: #ffc107;
+        }
+
+        .notification-count {
+            background: #ff4757;
+            color: white;
+            border-radius: 10px;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            margin-left: 8px;
+        }
+
+        .no-notifications {
+            text-align: center;
+            padding: 30px 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .dark-mode .no-notifications {
+            color: #aaa;
+        }
+
+        .no-notifications i {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+            opacity: 0.3;
+        }
+
+        /* المحتوى الرئيسي */
+        .main-content {
+            padding: 80px 15px 90px;
+            max-width: 1000px;
+            margin: 0 auto;
+            transition: var(--transition);
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: var(--card-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.1);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .card-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            align-self: flex-end;
+            font-weight: 500;
+            transition: var(--transition);
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .card-button:hover {
+            background: var(--text-color);
+        }
+
+        /* زر الرسالة السريعة */
+        .quick-message-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 55px;
+            height: 55px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            transition: var(--transition);
+        }
+
+        .quick-message-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* نافذة الرسالة السريعة */
+        .modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--background);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .heart-loader {
-            font-size: 4rem;
-            color: var(--primary);
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { 
-                transform: scale(1);
-                color: var(--primary);
-            }
-            25% { 
-                transform: scale(1.2);
-                color: var(--primary-light);
-            }
-            50% { 
-                transform: scale(1.1);
-                color: var(--primary-dark);
-            }
-            75% { 
-                transform: scale(1.3);
-                color: var(--primary);
-            }
-        }
-
-        .loading-text {
-            font-size: 1.2rem;
-            color: var(--primary);
-            font-weight: 600;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
-        }
-
-        /* Header بسيط */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            padding: 1.5rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logo {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            display: inline-block;
-            background: linear-gradient(45deg, #fff, #FFD700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
-
-        header h1 {
-            font-size: 1.5rem;
-            margin-bottom: 0.3rem;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
-        }
-
-        header p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-
-        /* Intro Section بسيط */
-        .intro {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 1.5rem;
-        }
-
-        .intro h2 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-
-        .intro p {
-            font-size: 1rem;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        /* Project Cards */
-        .project-card {
-            background: var(--surface);
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            border: 2px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .project-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1rem;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 12px rgba(230, 84, 128, 0.3);
+            z-index: 300;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
         }
 
-        .project-title {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .project-description {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            font-size: 0.9rem;
+        .modal-content {
+            background: var(--card-color);
+            width: 90%;
+            max-width: 400px;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(20px);
+            transition: var(--transition);
         }
 
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            padding: 0.7rem 1.2rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(230, 84, 128, 0.3);
-            font-size: 0.9rem;
+        .modal.active .modal-content {
+            transform: translateY(0);
         }
 
-        .project-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(230, 84, 128, 0.4);
-        }
-
-        /* Notifications */
-        .notification-center {
-            position: fixed;
-            top: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-        }
-
-        .notification-bell {
-            position: relative;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.3rem;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            border: 2px solid white;
-        }
-
-        .notification-bell:hover {
-            transform: scale(1.1) rotate(10deg);
-        }
-
-        .notification-badge {
-            position: absolute;
-            top: -3px;
-            right: -3px;
-            background: var(--accent);
-            color: var(--text);
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 0.7rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            border: 2px solid white;
-        }
-
-        .notification-dropdown {
-            position: absolute;
-            top: 60px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 350px;
-            background: var(--surface);
-            border-radius: 15px;
-            box-shadow: var(--shadow-hover);
-            padding: 0;
-            display: none;
-            max-height: 400px;
-            overflow: hidden;
-            border: 2px solid var(--border);
-        }
-
-        .notification-dropdown.show {
-            display: flex;
-            flex-direction: column;
-            animation: slideDown 0.3s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateX(-50%) translateY(-15px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-        }
-
-        .notification-header {
-            padding: 1rem 1.2rem;
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            color: white;
+        .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
         }
 
-        .notification-header h3 {
-            font-size: 1rem;
+        .dark-mode .modal-header {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
             font-weight: 600;
         }
 
-        .clear-btn {
-            background: rgba(255,255,255,0.2);
-            color: white;
+        .close-modal {
+            background: rgba(0, 0, 0, 0.05);
             border: none;
-            padding: 0.4rem 0.8rem;
-            border-radius: 8px;
+            font-size: 1.3rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.8rem;
-        }
-
-        .clear-btn:hover {
-            background: rgba(255,255,255,0.3);
-        }
-
-        .notifications-list {
-            padding: 0.8rem;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .notification-item {
-            background: var(--background);
-            padding: 0.8rem;
-            border-radius: 10px;
-            margin-bottom: 0.6rem;
-            border-right: 3px solid var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .notification-item:hover {
-            transform: translateX(-3px);
-        }
-
-        .notification-text {
-            color: var(--text);
-            margin-bottom: 0.4rem;
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-
-        .notification-time {
-            color: var(--text-light);
-            font-size: 0.7rem;
+            color: var(--text-color);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.3rem;
+            justify-content: center;
+            transition: var(--transition);
         }
 
-        .no-notifications {
-            text-align: center;
-            padding: 1.5rem;
-            color: var(--text-light);
+        .dark-mode .close-modal {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .close-modal:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .message-textarea {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: var(--border-radius);
+            resize: none;
+            font-family: inherit;
+            margin-bottom: 15px;
             font-size: 0.9rem;
+            transition: var(--transition);
+            background: var(--card-color);
+            color: var(--text-color);
         }
 
-        /* Footer بسيط */
-        footer {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 3rem;
+        .dark-mode .message-textarea {
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .footer-content {
-            max-width: 500px;
-            margin: 0 auto;
+        .message-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
         }
 
-        .footer-heart {
-            color: var(--accent);
-            animation: heartbeat 1.5s ease infinite;
-            display: inline-block;
-        }
-
-        /* Error States */
-        .error-message {
-            background: #ff4757;
-            color: white;
-            padding: 1rem;
-            border-radius: 10px;
-            text-align: center;
-            margin: 1.5rem 0;
-            box-shadow: 0 3px 12px rgba(255, 71, 87, 0.3);
-        }
-
-        .retry-btn {
-            background: white;
-            color: #ff4757;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            margin-top: 0.8rem;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
+        .char-count {
+            text-align: left;
             font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 20px;
         }
 
-        .retry-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        .dark-mode .char-count {
+            color: #aaa;
         }
 
-        /* Responsive */
+        .send-message-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .send-message-btn:hover {
+            background: var(--text-color);
+        }
+
+        /* طبقة التعتيم */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 150;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* التجاوب مع الشاشات المختلفة */
         @media (max-width: 768px) {
-            .projects-grid {
+            .cards-container {
                 grid-template-columns: 1fr;
-                gap: 1.2rem;
+                gap: 12px;
             }
             
-            .notification-dropdown {
-                width: 300px;
+            .sidebar {
+                width: 280px;
             }
             
-            header h1 {
-                font-size: 1.3rem;
-            }
-            
-            .logo {
-                font-size: 2rem;
-            }
-            
-            .intro h2 {
-                font-size: 1.5rem;
+            .fonts {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 1.5rem 0.8rem;
+            .header h1 {
+                font-size: 1.3rem;
             }
             
-            .notification-dropdown {
-                width: 280px;
+            .card {
+                padding: 15px;
             }
             
-            .project-card {
-                padding: 1.2rem;
+            .notification-actions {
+                flex-direction: column;
             }
-            
-            header {
-                padding: 1rem 1.2rem;
-            }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 30px;
+            color: var(--primary-color);
+            grid-column: 1 / -1;
+            font-size: 1rem;
+        }
+
+        .error {
+            text-align: center;
+            padding: 30px;
+            color: #ff4757;
+            grid-column: 1 / -1;
+            font-size: 1rem;
         }
     </style>
 </head>
-<body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="heart-loader">
-            <i class="fas fa-heart"></i>
-        </div>
-        <div class="loading-text">جاري التحميل...</div>
+<body class="theme-1 font-1 font-size-medium">
+    <!-- زر القائمة -->
+    <button id="menuBtn" class="menu-btn">
+        <i class="ph-list"></i>
+    </button>
+
+    <!-- الشريط العلوي -->
+    <div class="header">
+        <h1>Ma7ame7o&Y</h1>
     </div>
 
-    <!-- Notifications -->
-    <div class="notification-center">
-        <div class="notification-bell" id="notificationBell">
-            <i class="fas fa-bell"></i>
-            <div class="notification-badge" id="notificationBadge" style="display: none;">0</div>
+    <!-- القائمة الجانبية -->
+    <aside id="sidebar" class="sidebar">
+        <div class="top">
+            <span class="title">Ma7ame7o&Y</span>
+            <button class="close"><i class="ph-x"></i></button>
         </div>
-        <div class="notification-dropdown" id="notificationDropdown">
-            <div class="notification-header">
-                <h3><i class="fas fa-heart"></i> الإشعارات</h3>
-                <button class="clear-btn" id="clearNotifications">مسح الكل</button>
+
+        <div class="item">
+            <button class="drop-head">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="ph-gear"></i>
+                    <span>الإعدادات</span>
+                </div>
+                <i class="ph-caret-down"></i>
+            </button>
+
+            <div class="drop-body">
+                <label>🎨 ألوان الثيم</label>
+                <div class="colors">
+                    <span class="color c1 active" data-theme="theme-1"></span>
+                    <span class="color c2" data-theme="theme-2"></span>
+                    <span class="color c3" data-theme="theme-3"></span>
+                    <span class="color c4" data-theme="theme-4"></span>
+                    <span class="color c5" data-theme="theme-5"></span>
+                    <span class="color c6" data-theme="theme-6"></span>
+                </div>
+
+                <label>🔤 الخطوط</label>
+                <div class="fonts">
+                    <button class="font-btn active" data-font="font-1">طجول</button>
+                    <button class="font-btn" data-font="font-2">قاهرة</button>
+                    <button class="font-btn" data-font="font-3">المسيري</button>
+                    <button class="font-btn" data-font="font-4">تغيير</button>
+                    <button class="font-btn" data-font="font-5">أميري</button>
+                    <button class="font-btn" data-font="font-6">لطيف</button>
+                    <button class="font-btn" data-font="font-7">روبيك</button>
+                    <button class="font-btn" data-font="font-8">المَراعي</button>
+                    <button class="font-btn" data-font="font-9">رِيم كُفي</button>
+                    <button class="font-btn" data-font="font-10">شِهرزاد</button>
+                    <button class="font-btn" data-font="font-11">نَسخ</button>
+                    <button class="font-btn" data-font="font-12">قاهرة 2</button>
+                </div>
+
+                <label>📏 حجم الخط</label>
+                <div class="font-size-controls">
+                    <button class="font-size-btn" data-size="small">صغير</button>
+                    <button class="font-size-btn active" data-size="medium">متوسط</button>
+                    <button class="font-size-btn" data-size="large">كبير</button>
+                    <button class="font-size-btn" data-size="xlarge">كبير جداً</button>
+                </div>
+
+                <div class="extra-settings">
+                    <label>⚙️ إعدادات إضافية</label>
+                    <div class="setting-item">
+                        <span class="setting-label">وضع الليل</span>
+                        <div class="toggle-switch" id="darkMode"></div>
+                    </div>
+                    <div class="setting-item">
+                        <span class="setting-label">إشعارات الصوت</span>
+                        <div class="toggle-switch" id="soundNotifications"></div>
+                    </div>
+                    <div class="setting-item">
+                        <span class="setting-label">الاهتزاز</span>
+                        <div class="toggle-switch" id="vibration"></div>
+                    </div>
+                </div>
             </div>
-            <div class="notifications-list" id="notificationsList">
-                <div class="no-notifications">لا توجد إشعارات جديدة</div>
+        </div>
+
+        <div class="item">
+            <button class="drop-head" id="notificationsHead">
+                <div style="display: flex; align-items: center; gap: 10px; position: relative;">
+                    <i class="ph-bell"></i>
+                    <span>الإشعارات</span>
+                    <span class="notification-count" id="notificationCount" style="display: none;">0</span>
+                </div>
+                <i class="ph-caret-down"></i>
+            </button>
+
+            <div class="drop-body">
+                <div class="notifications-header">
+                    <div class="notifications-title">الإشعارات الأخيرة</div>
+                    <button class="clear-all-btn" onclick="clearAllNotifications()">
+                        <i class="ph-trash"></i>
+                        مسح الكل
+                    </button>
+                </div>
+                <div class="notifications-container" id="notificationsContainer">
+                    <!-- الإشعارات هتضاف هنا -->
+                </div>
             </div>
         </div>
-    </div>
+    </aside>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">M😚Y</div>
-        <h1>Mohamed & Yumna</h1>
-        <p>رحلتنا الجميلة تبدأ من هنا</p>
-    </header>
-
-    <!-- Main Content -->
-    <div class="container">
-        <section class="intro">
-            <h2><i class="fas fa-heart"></i> مشاريعنا</h2>
-            <p>اكتشفي عالمنا الخاص المليء بالذكريات الجميلة</p>
-        </section>
-
-        <div class="projects-grid" id="projectsContainer">
-            <!-- Projects will be loaded here -->
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content">
+        <div class="cards-container" id="cards-container">
+            <div class="loading">جاري تحميل المحتوى...</div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>Made with <span class="footer-heart">❤️</span> by Mohamed for Yumna</p>
-            <p>كل لحظة معكِ هي قصة جميلة</p>
+    <!-- زر الرسالة السريعة -->
+    <button class="quick-message-btn">
+        <i class="ph-chat-circle-text"></i>
+    </button>
+
+    <!-- نافذة الرسالة السريعة -->
+    <div class="modal" id="message-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">إرسال رسالة سريعة</div>
+                <button class="close-modal">
+                    <i class="ph-x"></i>
+                </button>
+            </div>
+            <textarea class="message-textarea" placeholder="اكتب رسالتك هنا (بحد أقصى 1000 حرف)" maxlength="1000"></textarea>
+            <div class="char-count">0/1000</div>
+            <button class="send-message-btn">إرسال</button>
         </div>
-    </footer>
+    </div>
+
+    <!-- طبقة التعتيم -->
+    <div class="overlay" id="overlay"></div>
 
     <script>
-        class MYYWebsite {
-            constructor() {
-                this.projects = [];
-                this.notifications = [];
-                this.botConfig = null;
-                this.lastUpdateId = 0;
-                this.isBotActive = false;
-                this.init();
-            }
+        // البيانات الأساسية
+        let webData = [];
+        let botData = {};
+        let pollingInterval = null;
+        let receivedMessageIds = new Set();
 
-            async init() {
-                try {
-                    await this.loadProjects();
-                    await this.setupNotifications();
-                    this.renderProjects();
-                    this.setupEventListeners();
-                    
-                    setTimeout(() => {
-                        this.hideLoading();
-                    }, 1500);
-                    
-                } catch (error) {
-                    this.showError('فشل في تحميل البيانات', error);
+        // تحميل الإعدادات المحفوظة
+        function loadSavedSettings() {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'theme-1';
+            const savedFont = localStorage.getItem('selectedFont') || 'font-1';
+            const savedFontSize = localStorage.getItem('selectedFontSize') || 'medium';
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            
+            // تطبيق الثيم والخط
+            document.body.className = `${savedTheme} ${savedFont} font-size-${savedFontSize}`;
+            
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+            }
+            
+            // تحديث الأزرار النشطة
+            document.querySelectorAll('.color').forEach(color => {
+                color.classList.toggle('active', color.getAttribute('data-theme') === savedTheme);
+            });
+            
+            document.querySelectorAll('.font-btn').forEach(font => {
+                font.classList.toggle('active', font.getAttribute('data-font') === savedFont);
+            });
+
+            document.querySelectorAll('.font-size-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-size') === savedFontSize);
+            });
+
+            // تحميل الإعدادات الإضافية
+            const settings = ['darkMode', 'soundNotifications', 'vibration'];
+            settings.forEach(setting => {
+                const isActive = localStorage.getItem(setting) === 'true';
+                const element = document.getElementById(setting);
+                if (element) {
+                    element.classList.toggle('active', isActive);
                 }
-            }
+            });
 
-            async loadProjects() {
-                try {
-                    const response = await fetch('web.json');
-                    if (!response.ok) throw new Error('ملف المشاريع غير موجود');
-                    
-                    const data = await response.json();
-                    this.projects = Array.isArray(data) ? data : data.projects || [];
-                    
-                } catch (error) {
-                    throw new Error('تعذر تحميل المشاريع: ' + error.message);
-                }
-            }
-
-            async setupNotifications() {
-                try {
-                    const response = await fetch('bot.json');
-                    if (!response.ok) throw new Error('ملف الإشعارات غير موجود');
-                    
-                    this.botConfig = await response.json();
-                    if (!this.botConfig.token || this.botConfig.token === 'ضع_توكن_البوت_هنا') {
-                        throw new Error('إعدادات البوت غير مكتملة');
-                    }
-                    
-                    await this.testBotConnection();
-                    this.startNotificationPolling();
-                    
-                } catch (error) {
-                    console.log('نظام الإشعارات غير نشط:', error.message);
-                    document.querySelector('.notification-center').style.display = 'none';
-                }
-            }
-
-            async testBotConnection() {
-                try {
-                    const url = `https://api.telegram.org/bot${this.botConfig.token}/getMe`;
-                    const response = await fetch(url);
-                    
-                    if (!response.ok) throw new Error('البوت غير متصل');
-                    
-                    const data = await response.json();
-                    if (!data.ok) throw new Error('البوت غير نشط');
-                    
-                    this.isBotActive = true;
-                    console.log('✅ البوت متصل بنجاح!');
-                    
-                } catch (error) {
-                    throw new Error('تعذر الاتصال بالبوت: ' + error.message);
-                }
-            }
-
-            async fetchTelegramMessages() {
-                if (!this.isBotActive) return [];
-                
-                try {
-                    const url = `https://api.telegram.org/bot${this.botConfig.token}/getUpdates?offset=${this.lastUpdateId + 1}`;
-                    const response = await fetch(url);
-                    
-                    if (!response.ok) throw new Error(`خطأ في الاستجابة: ${response.status}`);
-                    
-                    const data = await response.json();
-                    
-                    if (data.ok && data.result && data.result.length > 0) {
-                        const newMessages = data.result.filter(update => update.update_id > this.lastUpdateId);
-                        this.lastUpdateId = Math.max(...data.result.map(u => u.update_id));
-                        
-                        return newMessages.map(update => ({
-                            id: update.update_id,
-                            message: update.message?.text || 'رسالة بدون نص',
-                            timestamp: update.message?.date * 1000 || Date.now(),
-                            isNew: true
-                        }));
-                    }
-                    
-                    return [];
-                    
-                } catch (error) {
-                    console.log('❌ خطأ في جلب الرسائل:', error.message);
-                    return [];
-                }
-            }
-
-            startNotificationPolling() {
-                setInterval(async () => {
-                    const newMessages = await this.fetchTelegramMessages();
-                    newMessages.forEach(msg => this.addNotification(msg));
-                }, 10000);
-            }
-
-            addNotification(notification) {
-                if (this.notifications.some(notif => notif.id === notification.id)) return;
-                
-                this.notifications.unshift(notification);
-                this.updateNotificationUI();
-                
-                const bell = document.getElementById('notificationBell');
-                bell.style.animation = 'none';
-                setTimeout(() => {
-                    bell.style.animation = 'bellShake 0.5s ease';
-                }, 10);
-            }
-
-            updateNotificationUI() {
-                const badge = document.getElementById('notificationBadge');
-                const list = document.getElementById('notificationsList');
-                const newCount = this.notifications.filter(n => n.isNew).length;
-
-                if (newCount > 0) {
-                    badge.textContent = newCount > 9 ? '9+' : newCount;
-                    badge.style.display = 'flex';
-                } else {
-                    badge.style.display = 'none';
-                }
-
-                if (this.notifications.length === 0) {
-                    list.innerHTML = '<div class="no-notifications">لا توجد إشعارات جديدة</div>';
-                    return;
-                }
-
-                list.innerHTML = this.notifications.map(notif => `
-                    <div class="notification-item ${notif.isNew ? 'new' : ''}">
-                        <div class="notification-text">${notif.message}</div>
-                        <div class="notification-time">
-                            <i class="far fa-clock"></i>
-                            ${this.formatTime(notif.timestamp)}
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            formatTime(date) {
-                const now = new Date();
-                const diff = now - date;
-                
-                if (diff < 60000) return 'الآن';
-                if (diff < 3600000) return `قبل ${Math.floor(diff / 60000)} دقيقة`;
-                if (diff < 86400000) return `قبل ${Math.floor(diff / 3600000)} ساعة`;
-                return date.toLocaleDateString('ar-EG');
-            }
-
-            renderProjects() {
-                const container = document.getElementById('projectsContainer');
-                
-                if (this.projects.length === 0) {
-                    container.innerHTML = `
-                        <div style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
-                            <i class="fas fa-heart-broken" style="font-size: 2rem; color: var(--primary-light); margin-bottom: 1rem;"></i>
-                            <h3 style="color: var(--text-light);">لا توجد مشاريع متاحة</h3>
-                        </div>
-                    `;
-                    return;
-                }
-
-                container.innerHTML = this.projects.map(project => `
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas ${project.icon || 'fa-heart'}"></i>
-                        </div>
-                        <h3 class="project-title">
-                            <i class="fas fa-star"></i>
-                            ${project.title}
-                        </h3>
-                        <p class="project-description">${project.description}</p>
-                        <a href="${project.link}" class="project-link" target="_blank">
-                            <i class="fas fa-external-link-alt"></i>
-                            زيارة المشروع
-                        </a>
-                    </div>
-                `).join('');
-            }
-
-            setupEventListeners() {
-                const bell = document.getElementById('notificationBell');
-                const dropdown = document.getElementById('notificationDropdown');
-                const clearBtn = document.getElementById('clearNotifications');
-
-                bell.addEventListener('click', () => {
-                    dropdown.classList.toggle('show');
-                    this.notifications.forEach(n => n.isNew = false);
-                    this.updateNotificationUI();
-                });
-
-                clearBtn.addEventListener('click', () => {
-                    this.notifications = [];
-                    this.updateNotificationUI();
-                });
-
-                document.addEventListener('click', (e) => {
-                    if (!bell.contains(e.target) && !dropdown.contains(e.target)) {
-                        dropdown.classList.remove('show');
-                    }
-                });
-            }
-
-            hideLoading() {
-                const loadingScreen = document.getElementById('loadingScreen');
-                loadingScreen.style.opacity = '0';
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 500);
-            }
-
-            showError(message, error) {
-                console.error(message, error);
-                const container = document.getElementById('projectsContainer');
-                container.innerHTML = `
-                    <div class="error-message" style="grid-column: 1 / -1;">
-                        <i class="fas fa-exclamation-triangle" style="font-size: 1.5rem; margin-bottom: 0.8rem;"></i>
-                        <h3>${message}</h3>
-                        <p>${error.message}</p>
-                        <button class="retry-btn" onclick="location.reload()">
-                            <i class="fas fa-redo"></i>
-                            إعادة المحاولة
-                        </button>
-                    </div>
-                `;
-                this.hideLoading();
+            // تحميل رسائل تم استقبالها مسبقاً
+            const savedMessageIds = localStorage.getItem('receivedMessageIds');
+            if (savedMessageIds) {
+                receivedMessageIds = new Set(JSON.parse(savedMessageIds));
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            new MYYWebsite();
+        // حفظ الإعدادات
+        function saveSettings(theme, font, fontSize) {
+            localStorage.setItem('selectedTheme', theme);
+            localStorage.setItem('selectedFont', font);
+            if (fontSize) {
+                localStorage.setItem('selectedFontSize', fontSize);
+            }
+        }
+
+        // حفظ رسائل تم استقبالها
+        function saveReceivedMessageIds() {
+            localStorage.setItem('receivedMessageIds', JSON.stringify([...receivedMessageIds]));
+        }
+
+        // تحديث عدد الإشعارات
+        function updateNotificationCount() {
+            const notifications = getNotifications();
+            const hiddenNotifications = getHiddenNotifications();
+            const now = Date.now();
+            
+            let visibleCount = 0;
+            notifications.forEach((_, index) => {
+                const isHidden = hiddenNotifications[index] && hiddenNotifications[index] > now;
+                if (!isHidden) visibleCount++;
+            });
+            
+            const countElement = document.getElementById('notificationCount');
+            if (visibleCount > 0) {
+                countElement.textContent = visibleCount;
+                countElement.style.display = 'flex';
+            } else {
+                countElement.style.display = 'none';
+            }
+        }
+
+        // تهيئة التطبيق
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedSettings();
+            loadJSONData();
+            initEventListeners();
+            updateSidebarNotifications();
+            checkHiddenNotifications();
+            updateNotificationCount();
         });
+
+        // تحميل البيانات من ملفات JSON
+        async function loadJSONData() {
+            try {
+                // تحميل web.json
+                const webResponse = await fetch('web.json');
+                if (!webResponse.ok) throw new Error('فشل في تحميل web.json');
+                webData = await webResponse.json();
+                
+                // تحميل bot.json
+                const botResponse = await fetch('bot.json');
+                if (!botResponse.ok) throw new Error('فشل في تحميل bot.json');
+                botData = await botResponse.json();
+                
+                initCards();
+                initNotifications();
+                startTelegramPolling();
+                
+            } catch (error) {
+                console.error('خطأ في تحميل البيانات:', error);
+                document.getElementById('cards-container').innerHTML = 
+                    '<div class="error">خطأ في تحميل البيانات. تأكد من وجود الملفات المطلوبة.</div>';
+            }
+        }
+
+        // تهيئة الكروت
+        function initCards() {
+            const container = document.getElementById('cards-container');
+            container.innerHTML = '';
+            
+            webData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="ph-${getPhosphorIcon(item.icon)}"></i>
+                        </div>
+                        <div class="card-title">${item.title}</div>
+                    </div>
+                    <button class="card-button" onclick="window.open('${item.link}', '_blank')">زيارة</button>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        // تحويل أيقونات FontAwesome إلى Phosphor
+        function getPhosphorIcon(faIcon) {
+            const iconMap = {
+                'fa-heart': 'heart',
+                'fa-clock': 'clock',
+                'fa-images': 'images',
+                'fa-comments': 'chats',
+                'fa-play-circle': 'play-circle',
+                'fa-music': 'music-notes'
+            };
+            
+            return iconMap[faIcon] || 'question';
+        }
+
+        // تهيئة الإشعارات
+        function initNotifications() {
+            updateSidebarNotifications();
+        }
+
+        // الحصول على الإشعارات من localStorage
+        function getNotifications() {
+            const stored = localStorage.getItem('my_notifications');
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        // حفظ الإشعارات في localStorage
+        function saveNotifications(notifications) {
+            localStorage.setItem('my_notifications', JSON.stringify(notifications));
+        }
+
+        // الحصول على الإشعارات المخفية
+        function getHiddenNotifications() {
+            const stored = localStorage.getItem('hidden_notifications');
+            return stored ? JSON.parse(stored) : {};
+        }
+
+        // حفظ الإشعارات المخفية
+        function saveHiddenNotifications(hiddenNotifications) {
+            localStorage.setItem('hidden_notifications', JSON.stringify(hiddenNotifications));
+        }
+
+        // التحقق من الإشعارات المخفية
+        function checkHiddenNotifications() {
+            const hiddenNotifications = getHiddenNotifications();
+            const now = Date.now();
+            let updated = false;
+
+            for (const [id, hideUntil] of Object.entries(hiddenNotifications)) {
+                if (now > hideUntil) {
+                    delete hiddenNotifications[id];
+                    updated = true;
+                }
+            }
+
+            if (updated) {
+                saveHiddenNotifications(hiddenNotifications);
+                updateSidebarNotifications();
+                updateNotificationCount();
+            }
+        }
+
+        // تحديث الإشعارات في القائمة الجانبية
+        function updateSidebarNotifications() {
+            const container = document.getElementById('notificationsContainer');
+            const notifications = getNotifications();
+            const hiddenNotifications = getHiddenNotifications();
+            const now = Date.now();
+            
+            if (notifications.length === 0) {
+                container.innerHTML = `
+                    <div class="no-notifications">
+                        <i class="ph-bell-slash"></i>
+                        <div>لا توجد إشعارات</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            // عرض آخر 5 إشعارات فقط في القائمة الجانبية
+            const recentNotifications = notifications.slice(0, 5);
+            let visibleCount = 0;
+            container.innerHTML = '';
+            
+            recentNotifications.forEach((notification, index) => {
+                const isHidden = hiddenNotifications[index] && hiddenNotifications[index] > now;
+                
+                if (isHidden) return; // تخطي الإشعارات المخفية
+                
+                visibleCount++;
+                const notificationElement = document.createElement('div');
+                notificationElement.className = `notification-item ${isHidden ? 'hidden' : ''}`;
+                notificationElement.setAttribute('data-index', index);
+                
+                notificationElement.innerHTML = `
+                    <div class="notification-content">
+                        <div class="notification-message">${notification.message}</div>
+                        <div class="notification-time">
+                            <i class="ph-clock"></i>
+                            ${notification.time}
+                        </div>
+                    </div>
+                    <div class="notification-actions">
+                        <button class="notification-btn btn-delete" onclick="deleteNotification(${index})">
+                            <i class="ph-trash"></i>
+                            حذف
+                        </button>
+                        <button class="notification-btn btn-hide" onclick="hideNotification(${index})">
+                            <i class="ph-eye-closed"></i>
+                            إخفاء
+                        </button>
+                    </div>
+                `;
+                
+                container.appendChild(notificationElement);
+            });
+
+            // إذا لم يكن هناك إشعارات مرئية
+            if (visibleCount === 0) {
+                container.innerHTML = `
+                    <div class="no-notifications">
+                        <i class="ph-eye-closed"></i>
+                        <div>لا توجد إشعارات جديدة</div>
+                    </div>
+                `;
+            }
+        }
+
+        // التحقق من الإشعارات الجديدة بدون تكرار
+        function checkNotification(message, messageId) {
+            // إذا كانت الرسالة قد تم استقبالها مسبقاً، تجاهلها
+            if (receivedMessageIds.has(messageId)) {
+                return false;
+            }
+            
+            // إضافة الرسالة الجديدة إلى المجموعة
+            receivedMessageIds.add(messageId);
+            saveReceivedMessageIds();
+            
+            // أضف الإشعار
+            addNotification(message);
+            return true;
+        }
+
+        // إضافة إشعار جديد
+        function addNotification(message) {
+            const notifications = getNotifications();
+            const now = new Date();
+            const timeString = now.toLocaleString('ar-EG');
+            
+            notifications.unshift({
+                message: message,
+                time: timeString
+            });
+            
+            saveNotifications(notifications);
+            updateSidebarNotifications();
+            updateNotificationCount();
+        }
+
+        // حذف إشعار
+        function deleteNotification(index) {
+            const notifications = getNotifications();
+            notifications.splice(index, 1);
+            saveNotifications(notifications);
+            updateSidebarNotifications();
+            updateNotificationCount();
+        }
+
+        // إخفاء إشعار لمدة ساعة
+        function hideNotification(index) {
+            const hiddenNotifications = getHiddenNotifications();
+            const hideUntil = Date.now() + (60 * 60 * 1000); // ساعة من الآن
+            
+            hiddenNotifications[index] = hideUntil;
+            saveHiddenNotifications(hiddenNotifications);
+            updateSidebarNotifications();
+            updateNotificationCount();
+        }
+
+        // مسح جميع الإشعارات
+        function clearAllNotifications() {
+            if (confirm('هل تريد مسح جميع الإشعارات؟')) {
+                saveNotifications([]);
+                updateSidebarNotifications();
+                updateNotificationCount();
+            }
+        }
+
+        // إرسال رسالة إلى Telegram
+        async function sendTelegramMessage(message) {
+            try {
+                if (!botData.telegram_token || !botData.chat_id) {
+                    throw new Error('بيانات Telegram غير متوفرة');
+                }
+
+                const url = `https://api.telegram.org/bot${botData.telegram_token}/sendMessage`;
+                const payload = {
+                    chat_id: botData.chat_id,
+                    text: message,
+                    parse_mode: 'HTML'
+                };
+
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.ok) {
+                    addNotification(`📨 رسالتك: ${message}`);
+                } else {
+                    throw new Error(result.description || 'فشل في إرسال الرسالة');
+                }
+
+            } catch (error) {
+                console.error('خطأ في إرسال الرسالة:', error);
+            }
+        }
+
+        // استقبال رسائل من Telegram
+        async function getTelegramUpdates() {
+            try {
+                if (!botData.telegram_token) {
+                    throw new Error('توكن Telegram غير متوفر');
+                }
+
+                const lastUpdateId = localStorage.getItem('last_update_id') || 0;
+                const url = `https://api.telegram.org/bot${botData.telegram_token}/getUpdates?offset=${lastUpdateId + 1}`;
+
+                const response = await fetch(url);
+                const result = await response.json();
+
+                if (result.ok && result.result.length > 0) {
+                    result.result.forEach(update => {
+                        if (update.message && update.message.text) {
+                            const message = update.message.text;
+                            const sender = update.message.from.first_name || 'مستخدم';
+                            const messageId = update.message.message_id;
+                            
+                            const isNew = checkNotification(`📩 رسالة من ${sender}: ${message}`, messageId);
+                            
+                            if (isNew) {
+                                console.log('إشعار جديد:', message);
+                            }
+                        }
+                        
+                        // تحديث آخر update_id
+                        localStorage.setItem('last_update_id', update.update_id);
+                    });
+                }
+            } catch (error) {
+                console.error('خطأ في استقبال الرسائل:', error);
+            }
+        }
+
+        // بدء استقبال الرسائل من Telegram
+        function startTelegramPolling() {
+            // إيقاف أي عملية سابقة
+            if (pollingInterval) {
+                clearInterval(pollingInterval);
+            }
+            
+            // استقبال الرسائل كل 5 ثواني
+            pollingInterval = setInterval(getTelegramUpdates, 5000);
+            
+            // استقبال الرسائل فور التحميل
+            getTelegramUpdates();
+        }
+
+        // تهيئة مستمعي الأحداث
+        function initEventListeners() {
+            const sidebar = document.getElementById("sidebar");
+            const menuBtn = document.getElementById("menuBtn");
+            const closeBtn = document.querySelector(".close");
+
+            // فتح/إغلاق القائمة الجانبية
+            menuBtn.onclick = () => {
+                sidebar.classList.add("open");
+                document.getElementById('overlay').classList.add('active');
+            };
+
+            closeBtn.onclick = () => {
+                sidebar.classList.remove("open");
+                document.getElementById('overlay').classList.remove('active');
+            };
+
+            document.getElementById('overlay').addEventListener('click', function() {
+                sidebar.classList.remove('open');
+                document.getElementById('message-modal').classList.remove('active');
+                this.classList.remove('active');
+            });
+
+            // Dropdowns
+            document.querySelectorAll(".drop-head").forEach(head => {
+                head.onclick = () => {
+                    const body = head.nextElementSibling;
+                    body.classList.toggle("open");
+                    head.classList.toggle("active");
+                };
+            });
+
+            // تغيير الثيم مع تأثير fade وحفظ الإعدادات
+            document.querySelectorAll('.color').forEach(color => {
+                color.addEventListener('click', function() {
+                    const theme = this.getAttribute('data-theme');
+                    const currentFont = document.body.className.match(/font-\d/)[0];
+                    const currentFontSize = document.body.className.match(/font-size-\w+/)[0];
+                    const isDarkMode = document.body.classList.contains('dark-mode');
+                    
+                    document.body.className = `${theme} ${currentFont} ${currentFontSize}`;
+                    if (isDarkMode) document.body.classList.add('dark-mode');
+                    
+                    document.querySelectorAll('.color').forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // حفظ الإعدادات
+                    saveSettings(theme, currentFont);
+                });
+            });
+            
+            // تغيير الخط وحفظ الإعدادات
+            document.querySelectorAll('.font-btn').forEach(font => {
+                font.addEventListener('click', function() {
+                    const fontClass = this.getAttribute('data-font');
+                    const currentTheme = document.body.className.match(/theme-\d/)[0];
+                    const currentFontSize = document.body.className.match(/font-size-\w+/)[0];
+                    const isDarkMode = document.body.classList.contains('dark-mode');
+                    
+                    document.body.className = `${currentTheme} ${fontClass} ${currentFontSize}`;
+                    if (isDarkMode) document.body.classList.add('dark-mode');
+                    
+                    document.querySelectorAll('.font-btn').forEach(f => f.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // حفظ الإعدادات
+                    saveSettings(currentTheme, fontClass);
+                });
+            });
+
+            // تغيير حجم الخط
+            document.querySelectorAll('.font-size-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const fontSize = this.getAttribute('data-size');
+                    const currentTheme = document.body.className.match(/theme-\d/)[0];
+                    const currentFont = document.body.className.match(/font-\d/)[0];
+                    const isDarkMode = document.body.classList.contains('dark-mode');
+                    
+                    document.body.className = `${currentTheme} ${currentFont} font-size-${fontSize}`;
+                    if (isDarkMode) document.body.classList.add('dark-mode');
+                    
+                    document.querySelectorAll('.font-size-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // حفظ الإعدادات
+                    saveSettings(currentTheme, currentFont, fontSize);
+                });
+            });
+
+            // إعدادات التبديل
+            document.querySelectorAll('.toggle-switch').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const settingId = this.id;
+                    const isActive = this.classList.contains('active');
+                    
+                    localStorage.setItem(settingId, isActive);
+                    
+                    // تطبيق الإعدادات
+                    if (settingId === 'darkMode') {
+                        if (isActive) {
+                            document.body.classList.add('dark-mode');
+                        } else {
+                            document.body.classList.remove('dark-mode');
+                        }
+                    }
+                });
+            });
+            
+            // فتح/إغلاق نافذة الرسالة السريعة
+            document.querySelector('.quick-message-btn').addEventListener('click', function() {
+                document.getElementById('message-modal').classList.add('active');
+                document.getElementById('overlay').classList.add('active');
+            });
+            
+            document.querySelector('.close-modal').addEventListener('click', function() {
+                document.getElementById('message-modal').classList.remove('active');
+                document.getElementById('overlay').classList.remove('active');
+            });
+            
+            // عداد الأحرف في الرسالة السريعة
+            const textarea = document.querySelector('.message-textarea');
+            const charCount = document.querySelector('.char-count');
+            
+            textarea.addEventListener('input', function() {
+                const length = this.value.length;
+                charCount.textContent = `${length}/1000`;
+                
+                if (length > 1000) {
+                    this.value = this.value.substring(0, 1000);
+                    charCount.textContent = '1000/1000';
+                }
+            });
+            
+            // إرسال الرسالة السريعة
+            document.querySelector('.send-message-btn').addEventListener('click', function() {
+                const message = textarea.value.trim();
+                
+                if (message === '') {
+                    return;
+                }
+                
+                sendTelegramMessage(message);
+                
+                document.getElementById('message-modal').classList.remove('active');
+                document.getElementById('overlay').classList.remove('active');
+                
+                textarea.value = '';
+                charCount.textContent = '0/1000';
+            });
+
+            // التحقق من الإشعارات المخفية كل دقيقة
+            setInterval(checkHiddenNotifications, 60000);
+        }
     </script>
 </body>
 </html>
